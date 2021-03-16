@@ -1,0 +1,3180 @@
+<div class="page">
+
+   <div class="navbar" style="background-color: white; height: 30px;">
+         <span id="search_form" class="searchbar" style="display: block; margin-top: 0em;">
+          <div class="searchbar-inner">
+            <div class="searchbar-input-wrap">
+              <input id="search_form_input" type="search" placeholder="Search">
+              <i class="searchbar-icon"></i>
+            </div>
+            <a href="#" onclick="getSearchOrPottDataForOption('search', 'news_option', '', 'search_results_holder', 'start')" style="margin: 15px;" class="popup-open" data-popup=".search">
+              <i class="icon f7-icons ios-only">arrow_right</i>
+              <i class="icon material-icons md-only">arrow_forward</i>
+            </a>
+          </div>
+        </span>
+      </div>
+  <div class="toolbar tabbar tabbar-labels toolbar-bottom-md" style="background-color: #fff;">
+    <div class="toolbar-inner">
+
+      <a onclick="fetchNews('0','news_holder')" href="#tab-1"  id="services_menu" class="tab-link tab-link-active" style="font-size: 12px; font-weight: 600;">
+        <i class="icon f7-icons ios-only">world</i>
+        <i class="icon icon-fill f7-icons ios-only">world_fill</i>
+        <i class="icon material-icons md-only">public</i>
+          <span class="tabbar-label" style="font-size: 14px;">News</span>
+      </a>
+      <a href="#tab-2" onclick="getMyChats()" id="tracking_menu"  class="tab-link" style="font-size: 12px; font-weight: 600;">
+        <i class="icon f7-icons ios-only">chats</i>
+        <i class="icon icon-fill f7-icons ios-only">chats_fill</i>
+        <i class="icon material-icons md-only">chat</i>
+         <span class="tabbar-label" style="font-size: 14px;">Chats</span>
+</a>
+
+      <a href="#tab-3" onclick="getMyNotifications('')" id="addressses_menu" class="tab-link" style="font-size: 12px; font-weight: 600;">
+        <i class="icon f7-icons ios-only">bell<span class="badge color-green" style="line-height: 10px;
+    height: 10px; border-radius: 10px; padding: 0 1px; min-width: 10px"></span></i>
+        <i class="icon icon-fill f7-icons ios-only">bell_fill</i>
+        <i class="icon material-icons md-only">add_alert</i>
+        <span class="tabbar-label" style="font-size: 14px;">Notification</span>
+    </a>
+      <a href="#tab-4"  onclick="fetchMyShares('selected_shares_id_transfer_main')" id="transfer_center" class="tab-link" style="font-size: 12px; font-weight: 600;">
+        <i class="icon f7-icons ios-only">forward</i>
+        <i class="icon icon-fill f7-icons ios-only">forward_fill</i>
+        <i class="icon material-icons md-only">redo</i> 
+        <span class="tabbar-label" style="font-size: 14px;">Transfer</span>
+</a>
+      <a href="#tab-5" onclick="getPottInfo(this)" data-pottname = "???"  id="profile_menu" class="tab-link" style="font-size: 12px; font-weight: 600;">
+        <i class="icon f7-icons ios-only">person</i>
+        <i class="icon icon-fill f7-icons ios-only">person_fill</i>
+        <i class="icon material-icons md-only">account_circle</i>
+        <span class="tabbar-label" style="font-size: 14px;">Pott</span>
+</a>
+    </div>
+  </div>
+    <div class="tabs-animated-wrap">
+    <div class="tabs">
+    <!--news-->
+      <div id="tab-1" class="page-content tab tab-active">
+
+        <!--  normal picture card-->
+        <div class="popover popover-repost">
+          <div class="popover-angle"></div>
+            <div class="popover-inner">
+              <div class="list" style="font-size: 14px;">
+                <ul>
+                  <li><a onclick="rePostNews('');" class="list-button" style="line-height: 30px;">Quick Repost</a></li>
+                  <li><a onclick="app.dialog.prompt('', 'Repost', callbackOk, callbackCancel)" class="list-button" style="line-height: 30px;">Repost with comment</a></li>
+                 </ul>
+              </div>
+            </div>
+          </div>
+
+        <div class="popover popover-menu">
+          <div class="popover-angle"></div>
+            <div class="popover-inner"><div class="list" style="font-size: 14px;">
+              <ul>
+                <li >
+                  <a onclick="fixSaleForm('advert', '1', '');" class="list-button item-link popover-close  popup-open" data-popup=".boost" style="line-height: 30px;">Boost</a>
+                </li>
+                <li>
+                  <a class="list-button item-link popover-close popup-open" data-popup=".contact" style="line-height: 30px;">Report</a>
+                </li>
+                <li onclick="copyNewsLink();">
+                  <a class="list-button item-link popover-close" style="line-height: 30px;">Copy News Link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+<!-- link post-->
+<!--
+ <div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;">
+      <div class="card-header">
+       <a href="#" class="link popover-open" data-popover=".popover-menu" style="float: right;"><i class="icon f7-icons ios-only" style="font-size: 20px;">more_vertical</i></a>
+       <div class="demo-facebook-avatar popup-open" data-popup=".pott" style="background-image: url(img/wide.jpg); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%;"></div>
+        <div class="demo-facebook-name">John Doe</div>
+        <div class="demo-facebook-date">@johndoe</div>
+        <div class="demo-facebook-date">Monday at 3:47 PM</div>
+      </div>
+      <div class="card-content">
+      <p style="margin-left: 10px; font-size: 12px;">What a nice photo i took yesterday!</p>
+
+      <div style="display: ' + news_card_display_style + '" class="card elevation-4">
+     <a href="#"><div style="position: relative; width: 100%; padding-top: 100%;">
+      <div style="width: 100%; height: 50%; margin-top: -100%"><img src="img/newspaper.jpg" width="100%;"></div>
+      <div style="width: 100%; height: 50%; background-color: white;">
+        <p style="overflow: hidden; text-overflow: hidden; -webkit-line-clamp:2; -webkit-box-orient: vertical; display: -webkit-box; font-weight: 900; margin: 16px 5px;">' + news_url_title + '</p>
+        <p style="overflow: hidden; text-overflow: hidden; -webkit-line-clamp:1; -webkit-box-orient: vertical; display: -webkit-box; margin: 16px 5px;">' + news_url_web_address + '</p></div>
+     </div>
+   </a>
+   </div>
+ </div>
+      <p class="likes" style="font-size: 10px; line-height: 0.8;"><span class="popup-open" data-popup=".popup-likes">Likes: 112 &nbsp;</span><span> dislikes: 43 &nbsp;</span> Comments: 43 &nbsp; views: 43</p>
+      <div class="card-footer">
+        <a href="#" class="link"> 
+        <i class="icon material-icons md-only" style="font-size: 20px;">favorite_border</i>
+        <i class="icon f7-icons ios-only" style="font-size: 20px;">heart</i>
+      </a>
+        <a href="#" class="link">
+          <i class="icon material-icons md-only" style="font-size: 20px;">favorite_border</i>
+          <img src="img/dislike-01.svg" width="24px" height="24px"></a>
+        <a href="#" class="link popup-open" data-popup=".comments">
+        <i class="icon material-icons md-only" style="font-size: 20px;">chat_bubble_outline</i>
+        <i class="icon f7-icons ios-only" style="font-size: 20px;">chat</i></a>
+        <a href="#" class="link popover-open" data-popover=".popover-repost"> 
+        <i class="icon material-icons md-only" style="font-size: 20px;">cached</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;">reply</i></a>
+        <a href="#" class="link">
+          <i class="icon material-icons md-only" style="font-size: 20px;">local_grocery_store</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;">bag</i></a></div>
+    </div>
+  -->
+    <!--end of link post-->
+
+
+              <span id="news_holder">
+
+
+  <!-- NORMAL NEWS CARD START --> 
+
+  <!--
+   <div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;">
+      <div class="card-header">
+       <a href="#" class="link popover-open" onclick="setGlobalNewsId(this);" data-newsid = "'+ news_id +'" data-popover=".popover-menu" style="float: right;"><i class="icon f7-icons ios-only" style="font-size: 20px;">more_vertical</i></a>
+
+        <div onclick="getPottInfo(this);" data-pottname = "'+ news_maker_pottname +'" class="demo-facebook-avatar popup-open" data-popup=".pott" style="background-image: url(' + news_maker_pro_pic + '); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 5px"></div>
+        <div class="demo-facebook-name">' + news_maker_full_name + '</div>
+        <div class="demo-facebook-date">@' + news_maker_pottname + '</div>
+        <div class="demo-facebook-date">' + news_date + '</div>
+
+      </div>
+      <div class="card-content">
+      <p style="margin-left: 10px; font-size: 12px;" onclick="copyNewsText();" data-newstext="' + news_main + '" >' + news_main + '</p>
+
+
+    <a href="#" @click="openStandalone">
+      <div style="background-image: url(' + news_image + '); background-size: cover; position: relative; width: 100%; padding-top: 100%;  display: '+ news_image_display_style +'">
+     </div>
+    </a>
+    <video ' + poster_code + '  onclick="playPauseThisVideo(this)" onplay="pauseOtherPlayers(this)" onpause = "pauseVideo(this)" id="video_' + news_id + '" data-newsid = "'+ news_id +'" style="width: 100%; display: '+ news_video_display_style +'" height="500px;"  controls preload="auto">
+      <source src="' + news_video + '" type="video/mp4">
+      <source src="' + news_video + '" type="video/webm">
+    </video>
+ </div>
+       <p class="likes" style="font-size: 10px; line-height: 0.8;">
+        <span style="display: ' + likes_display_style + '" onclick="getLikes(this);" data-type="1" data-newsid = "'+ news_id +'" class="popup-open" data-popup=".popup-likes">Likes: ' + news_likes_num + ' </span>&nbsp; 
+        <span style="display: ' + dislikes_display_style + '" data-type="2" onclick="getLikes(this);" data-newsid = "'+ news_id +'" class="popup-open" data-popup=".popup-likes">dislikes:  ' + news_dislikes_num + '  </span>&nbsp; 
+        <span style="display: ' + comment_display_style + '" onclick="getComments();" data-newsid = "'+ news_id +'" class="popup-open" data-popup=".comments">Comments:  ' + news_comment_num + '  </span>&nbsp; 
+        <span style="display: ' + repost_display_style + '">reposts:  ' + news_share_num + ' </span>&nbsp; 
+        <span style="display: ' + news_views_num_display_style + '">views:  ' + news_views_num + ' </span>
+       </p>
+
+      <div class="card-footer">
+
+        <a onclick="likeThis(this);" data-liketype="1" data-newsid = "'+ news_id +'" id="like_'+ news_id +'" data-status = ' + news_set_like_color + ' href="#" class="link"> 
+          <i class="icon material-icons md-only" style="font-size: 20px;">favorite_border</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px; color : '+ news_like_color + '">heart</i>
+        </a>
+
+        <a onclick="likeThis(this);" data-liketype="2"  data-newsid = "'+ news_id +'" id="dislike_'+ news_id +'" data-status = ' + news_set_dislike_color + ' href="#" class="link">
+          <i id="android_like_icon_' + news_id + '" class="icon material-icons md-only" style="font-size: 20px;">favorite_border</i>
+          <i id="ios_like_icon_' + news_id + '" class="icon f7-icons ios-only" style="font-size: 20px; color : '+ news_dislike_color + '">heart</i>
+        </a>
+
+        <a href="#" onclick="getComments(this);" data-newsid = "'+ news_id +'" class="link popup-open" data-popup=".comments">
+          <i class="icon material-icons md-only" style="font-size: 20px;">chat_bubble_outline</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;">chat</i>
+        </a>
+
+        <a href="#" onclick="setGlobalNewsId(this);" data-newsid = "'+ news_id +'" class="link popover-open" data-popover=".popover-repost"> 
+          <i class="icon material-icons md-only" style="font-size: 20px;">cached</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;">reply</i>
+        </a>
+
+        </div>
+    </div>
+    -->
+  <!-- NORMAL NEWS CARD END -->
+
+  <!-- NEWS WITH BUY CARD START -->
+<!--
+<div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;"><div class="card-header">
+
+       <a onclick="setGlobalNewsId(this);" data-newsid = "'+ news_id +'"  href="#" class="link popover-open" data-popover=".popover-menu" style="float: right;"><i class="icon f7-icons ios-only" style="font-size: 20px;">more_vertical</i></a>
+
+        <div onclick="getPottInfo(this);" data-pottname = "'+ news_maker_pottname +'" class="demo-facebook-avatar popup-open" data-popup=".pott" style="background-image: url(' + news_maker_pro_pic + '); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 5px"></div>
+        <div class="demo-facebook-name" style="font-weight: bolder;">' + news_maker_full_name + '&nbsp;<i class="icon f7-icons ios-only" style="font-size: 13px; color : #3399ff;display: ' + news_maker_verified_status_display_style + '">check_round_fill</i>
+</div>
+        <div class="demo-facebook-date" style="font-style: italic; color: green">@' + news_maker_pottname + '</div>
+        <div class="demo-facebook-date">' + news_date + '</div>
+
+      </div>
+      <div class="card-content">
+         <div class="block">
+          <div style="text-align: center; border: solid; border-color: '+ title_color + '; color:  '+ title_color + ';; color: #009933; border-top-right-radius: 5px; border-top-left-radius: 5px; border-width: 1px; border-bottom: none; font-weight: bolder;">' + news_type_title + '</div>
+        <div style="text-align: center; border: solid; border-color: title_color; border-bottom-left-radius: 5px; border-width: 1px; border-bottom-right-radius: 5px;">' + news_sub + '</div>
+    </div>
+
+      <p style="margin-left: 10px; font-size: 12px;" onclick="copyNewsText();" data-newstext="' + news_main + '" >' + news_main + '</p>
+
+
+    <a href="#" @click="openStandalone">
+      <div style="background-image: url(' + news_image + '); background-size: cover; position: relative; width: 100%; padding-top: 100%;  display: '+ news_image_display_style +'">
+     </div>
+    </a>
+    <video onclick="playPauseThisVideo(this)" ' + poster_code + '  onplay="pauseOtherPlayers(this)" onpause = "pauseVideo(this)" id="video_' + news_id + '" data-newsid = "'+ news_id +'" style="width: 100%; display: '+ news_video_display_style +'" height="500px;"  controls preload="auto">
+      <source src="' + news_video + '" type="video/mp4">
+      <source src="' + news_video + '" type="video/webm">
+    </video>
+ </div>
+       <p class="likes" style="font-size: 10px; line-height: 0.8;">
+        <span style="display: ' + likes_display_style + '" onclick="getLikes(this);" data-type="1" data-newsid = "'+ news_id +'" class="popup-open" data-popup=".popup-likes">Likes: ' + news_likes_num + ' </span>&nbsp; 
+        <span style="display: ' + dislikes_display_style + '" data-type="2" onclick="getLikes(this);" data-newsid = "'+ news_id +'" class="popup-open" data-popup=".popup-likes">dislikes:  ' + news_dislikes_num + '  </span>&nbsp; 
+        <span style="display: ' + comment_display_style + '" onclick="getComments();" data-newsid = "'+ news_id +'" class="popup-open" data-popup=".comments">Comments:  ' + news_comment_num + '  </span>&nbsp; 
+        <span style="display: ' + news_buy_num_display_style + '" onclick="getLikes(this);" data-type="3" data-newsid = "'+ news_id +'" class="popup-open" data-popup=".popup-likes">Transactions: ' + news_buy_num + ' </span>&nbsp;
+        <span style="display: ' + repost_display_style + '">reposts:  ' + news_share_num + ' </span>&nbsp; 
+        <span style="display: ' + news_views_num_display_style + '">views:  ' + news_views_num + ' </span>
+       </p>
+
+
+      <div class="card-footer">
+
+        <a onclick="likeThis(this);" data-liketype="1" data-newsid = "'+ news_id +'" id="like_'+ news_id +'" data-status = "' + news_set_like_color + '" href="#" class="link"> 
+          <i class="icon material-icons md-only" style="font-size: 20px; color : '+ news_like_color + '">favorite_border</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px; color : '+ news_like_color + '">' + like_icon_type + '</i>
+        </a>
+
+        <a onclick="likeThis(this);" data-liketype="2"  data-newsid = "'+ news_id +'" id="dislike_'+ news_id +'" data-status = "' + news_set_dislike_color + '" href="#" class="link">
+          <i id="android_like_icon_' + news_id + '" class="icon material-icons md-only" style="font-size: 20px; color : '+ news_dislike_color + '">favorite_border</i>
+          <i id="ios_like_icon_' + news_id + '" class="icon f7-icons ios-only" style="font-size: 20px; color : '+ news_dislike_color + '">heart</i>
+        </a>
+
+        <a href="#" onclick="getComments(this);" data-newsid = "'+ news_id +'" class="link popup-open" data-popup=".comments">
+          <i class="icon material-icons md-only" style="font-size: 20px;">chat_bubble_outline</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;">chat</i>
+        </a>
+
+        <a href="#" onclick="setGlobalNewsId(this);" data-newsid = "'+ news_id +'" class="link popover-open" data-popover=".popover-repost"> 
+          <i class="icon material-icons md-only" style="font-size: 20px;">cached</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;">reply</i>
+        </a>
+
+        <a onclick="addNewsTypePopUpClass(this); getBuyItemInfo(this);" data-type = "' + news_type + '" data-newsid = "'+ news_id +'" href="#" class="link">
+          <i class="icon f7-icons ios-only" style="font-size: 20px; color: #009933;">bag_fill</i>
+        </a>
+
+      </div>
+    </div>
+  -->
+  <!--  NEWS WITH BUY CARD END -->
+<!--         <a onclick="addNewsTypePopUpClass(this); getBuyItemInfo(this);" data-type = "' + news_type + '" data-newsid = "'+ news_id +'" href="#" class="link popup-open" data-popup=".purchase">
+-->
+
+  <!-- SHARED NEWS CARD START -->
+  <!--
+  <div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;">
+        <div class="block"> <i class="icon f7-icons ios-only" style="font-size: 10px;">reply_fill</i>&nbsp;
+<span onclick="getPottInfo(this);" data-pottname = "'+ news_maker_pottname +'" style="font-style: bold; font-weight: 600;" class=" popup-open" data-popup=".pott">' + news_maker_full_name  + '</span> reposted - <span>' + news_main +'</span></div>
+        <hr>
+      <div class="card-header">
+
+       <a onclick="setGlobalNewsId(this);" data-newsid = "'+ news_id +'"  href="#" class="link popover-open" data-popover=".popover-menu" style="float: right;"><i class="icon f7-icons ios-only" style="font-size: 20px;">more_vertical</i></a>
+
+        <div onclick="getPottInfo(this);" data-pottname = "'+ news_shared_maker_pottname +'" class="demo-facebook-avatar popup-open" data-popup=".pott" style="background-image: url(' + news_shared_maker_pro_pic + '); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 5px"></div>
+        <div class="demo-facebook-name">' + news_shared_maker_full_name + '&nbsp;<i class="icon f7-icons ios-only" style="font-size: 13px; color : #3399ff;display: ' + news_shared_maker_verified_status_display_style + '">check_round_fill</i></div>
+        <div class="demo-facebook-date">@' + news_shared_maker_pottname + '</div>
+
+      </div><br>
+      <div class="card-content">
+      <p style="margin-left: 10px; font-size: 12px;" onclick="copyNewsText();" data-newstext="' + news_shared_main + '" >' + news_shared_main + '</p>
+
+
+      <a href="#" @click="openStandalone">
+        <div style="background-image: url(' + news_shared_image + '); background-size: cover; position: relative; width: 100%; padding-top: 100%;  display: '+ news_shared_image_display_style +'">
+       </div>
+      </a>
+      <video onclick="playPauseThisVideo(this)" onplay="pauseOtherPlayers(this)" onpause = "pauseVideo(this)" id="video_' + news_shared_id + '" ' + poster_code_shared_news + ' data-newsid = "'+ news_shared_id +'" style="width: 100%; display: '+ news_video_display_style +'" height="500px;"  controls preload="auto">
+        <source src="' + news_video + '" type="video/mp4">
+        <source src="' + news_video + '" type="video/webm">
+      </video>
+
+      </div>
+
+       <p class="likes" style="font-size: 10px; line-height: 0.8;">
+        <span style="display: ' + shared_news_likes_num_display_style + '" onclick="getLikes(this);" data-type="1" data-newsid = "'+ news_shared_id +'" class="popup-open" data-popup=".popup-likes">Likes: ' + shared_news_likes_num + ' </span>&nbsp; 
+        <span style="display: ' + shared_news_dislikes_num_display_style + '" data-type="2" onclick="getLikes(this);" data-newsid = "'+ news_shared_id +'" class="popup-open" data-popup=".popup-likes">dislikes:  ' + shared_news_dislikes_num + '  </span>&nbsp; 
+        <span style="display: ' + shared_news_comments_num_display_style + '" onclick="getComments();" data-newsid = "'+ news_shared_id +'" class="popup-open" data-popup=".comments">Comments:  ' + shared_news_comments_num + '  </span>&nbsp; 
+        <span style="display: ' + shared_news_purchases_num_display_style + '" onclick="getLikes(this);" data-type="3" data-newsid = "'+ news_shared_id +'" class="popup-open" data-popup=".popup-likes">' + reaction_name + ': ' + shared_news_purchases_num + ' </span>&nbsp;
+        <span style="display: ' + shared_news_shares_num_display_style + '">reposts:  ' + shared_news_shares_num + ' </span>&nbsp; 
+        <span style="display: ' + news_views_num_display_style + '">views:  ' + shared_news_views_num + ' </span>
+       </p>
+
+      <div class="card-footer">
+        <a onclick="likeThis(this);" data-liketype="1" data-newsid = "'+ news_shared_id +'" id="like_'+ news_shared_id +'" data-status = "' + news_set_like_color + '" href="#" class="link"> 
+          <i class="icon material-icons md-only" style="font-size: 20px;color : '+ news_like_color + '">favorite_border</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;color : '+ news_like_color + '">' + like_icon_type + '</i>
+        </a>
+
+        <a onclick="likeThis(this);" data-liketype="2"  data-newsid = "'+ news_shared_id +'" id="dislike_'+ news_shared_id +'" data-status = "' + news_set_dislike_color + '" href="#" class="link">
+          <i id="android_like_icon_' + news_shared_id + '" class="icon material-icons md-only" style="font-size: 20px; color : '+ news_dislike_color + '">favorite_border</i>
+          <i id="ios_like_icon_' + news_shared_id + '" class="icon f7-icons ios-only" style="font-size: 20px; color : '+ news_dislike_color + '">heart</i>
+        </a>
+
+        <a href="#" onclick="getComments(this);" data-newsid = "'+ news_shared_id +'" class="link popup-open" data-popup=".comments">
+          <i class="icon material-icons md-only" style="font-size: 20px;">chat_bubble_outline</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;">chat</i>
+        </a>
+
+        <a href="#" onclick="setGlobalNewsId(this);" data-newsid = "'+ news_shared_id +'" class="link popover-open" data-popover=".popover-repost"> 
+          <i class="icon material-icons md-only" style="font-size: 20px;">cached</i>
+          <i class="icon f7-icons ios-only" style="font-size: 20px;">reply</i>
+        </a>
+
+        <a style="display: ' + news_shared_type_purchase_icon_display + '" onclick="addNewsTypePopUpClass(this); getBuyItemInfo(this);" data-type = "' + news_type + '" data-newsid = "'+ news_shared_id +'" href="#" class="link">
+          <i class="icon f7-icons ios-only" style="font-size: 20px; color: #009933;">bag_fill</i>
+        </a>
+
+      </div>
+      </div>
+    -->
+  <!-- SHARED NEWS CARD END -->
+
+    </span>
+    <span onclick="fetchNews('', 'news_holder')" style="margin-left: 50%">
+          <button class="button button-big button-fill">
+      <i class="icon f7-icons ios-only">arrow_down_fill</i>
+      <i class="icon material-icons md-only">arrow_down_fill</i>
+          </button>
+     </span><br><br>
+  </div><!-- end of div that contains news-->
+    <!--bubble for news page-->
+    <div class="fab fab-right-bottom" style="position: fixed; right: 20px;">
+    <a href="#">
+      <i class="icon f7-icons ios-only">add</i>
+      <i class="icon f7-icons ios-only">close</i>
+      <i class="icon material-icons md-only">add</i>
+      <i class="icon material-icons md-only">close</i>
+    </a>
+    <div class="fab-buttons fab-buttons-top">
+      <a style="background-color: white"  href="" class="fab-label-button popup-open" data-popup=".justnews">
+        <span> 
+      <i style="color: black" class="icon f7-icons ios-only">compose</i>
+      <i style="color: black" class="icon material-icons md-only">add</i>
+     </span>
+        <span class="fab-label">Post News</span>
+      </a>
+      <a style="background-color: #009933" href="" class="fab-label-button popup-open" data-popup=".yardsalenews">
+        <span> 
+          <i style="color: black" class="icon f7-icons ios-only">tags</i>
+          <i style="color: black" class="icon material-icons md-only">add</i>
+     </span>
+        <span class="fab-label">Yard Sale</span>
+      </a>
+      <a style="background-color: #ff9900" href="" class="fab-label-button popup-open" data-popup=".sharessalenews" onclick="fetchMyShares('selected_shares_id');">
+        <span> 
+          <i style="color: black" class="icon f7-icons ios-only">briefcase</i>
+          <i style="color: black" class="icon material-icons md-only">add</i>
+     </span>
+        <span class="fab-label">Sell Shares</span>
+      </a>
+       <a style="background-color: #e6e600" href="" class="fab-label-button popup-open" data-popup=".eventnews">
+        <span>
+         <i style="color: black" class="icon f7-icons ios-only">calendar</i>
+         <i style="color: black" class="icon material-icons md-only">add</i>
+     </span>
+        <span class="fab-label">Start Event</span>
+      </a> 
+      <a style="background-color: #33adff" href="" class="fab-label-button popup-open" data-popup=".fundraisernews">
+        <span>
+         <i style="color: black" class="icon f7-icons ios-only">persons</i>
+         <i style="color: black" class="icon material-icons md-only">add</i>
+     </span>
+        <span class="fab-label">Start Fundraiser</span>
+      </a>
+    </div>
+  </div>
+      <!--end of bubble for news page-->
+      </div>
+          <!--chats-->
+
+  <div id="tab-2" class="page-content tab">
+
+    
+
+    <!--
+     <div class="list media-list">
+      <ul>
+        <li>
+          <a href="/messages/" class="item-link item-content">
+            <div class="item-media" style="background-image: url(img/wide.jpg); background-size: cover; position: relative; width: 15%; padding-top: 15%; border-radius: 50%; margin-top: 5px;"></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title" style="font-size: 14px;">John Doe</div>
+                <div class="item-after" style="font-size: 10px;">July 10 2017</div>
+              </div>
+              <div class="item-subtitle" style="font-size: 12px;">@johndoe</div>
+              <div class="item-text" style="-webkit-line-clamp: 1; font-size: 13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</div>
+            </div></a></li>
+        <li>
+          <a href="#" class="item-link item-content">
+            <div class="item-media" style="background-image: url(img/wide.jpg); background-size: cover; position: relative; width: 15%; padding-top: 15%; border-radius: 50%; margin-top: 5px;"></div>
+                <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title" style="font-size: 14px;">Yellow Submarine</div>
+                <div class="item-after" style="font-size: 10px;">July 10 2017</div>
+              </div>
+              <div class="item-subtitle" style="font-size: 12px;">Beatles</div>
+              <div class="item-text" style="-webkit-line-clamp: 1;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</div>
+            </div></a></li>
+        <li>
+          <a href="#" class="item-link item-content">
+              <div class="item-media" style="background-image: url(img/wide.jpg); background-size: cover; position: relative; width: 15%; padding-top: 15%; border-radius: 50%; margin-top: 5px;"></div>
+             <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title" style="font-size: 14px;">Yellow Submarine</div>
+                <div class="item-after" style="font-size: 10px;">July 10 2017</div>
+              </div>
+              <div class="item-subtitle" style="font-size: 12px;">Beatles</div>
+              <div class="item-text" style="-webkit-line-clamp: 1;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</div>
+            </div></a></li>
+      </ul>
+    </div>
+    -->        
+  </div>
+          <!--notifications-->
+
+      <div id="tab-3" class="page-content tab">
+        <span id="notifications_holder">
+
+<!--
+          <div class=" popup-open" ' + popup_and_function_code + ' style="margin-right: 0; margin-left: 0; background-color: transparent;"><div class="item-title-row" style="float: right;margin-right: 5px;"><div class="item-after" style="font-size: 10px;">' + not_time + '</div></div><div class="card-header"><div onclick="" class="demo-facebook-avatar" style="background-image: url(img/wide.jpg); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 10px"></div><div class="demo-facebook-name">' + notification_text + '</div></div></div>
+          <div class="popup-open" ' + popup_and_function_code + ' style="margin-right: 0; margin-left: 0; background-color: transparent;"><div class="item-title-row" style="float: right;margin-right: 5px;"><div class="item-after" style="font-size: 10px;">' + not_time + '</div></div><div class="card-header"><div onclick="" class="demo-facebook-avatar" style="background-image: url(img/wide.jpg); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 10px"></div><div class="demo-facebook-name">' + notification_text + '</div></div></div>
+          <div class="popup-open" ' + popup_and_function_code + ' style="margin-right: 0; margin-left: 0; background-color: transparent;"><div class="item-title-row" style="float: right;margin-right: 5px;"><div class="item-after" style="font-size: 10px;">' + not_time + '</div></div><div class="card-header"><div onclick="" class="demo-facebook-avatar" style="background-image: url(' + profile_pic + '); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 10px"></div><div class="demo-facebook-name">' + notification_text + '</div></div></div>
+-->        
+        </span>
+        <span onclick="getMyNotifications('')" style="margin-left: 50%">
+          <button class="button button-big button-fill">
+          <i class="icon f7-icons ios-only">arrow_down_fill</i>
+          <i class="icon material-icons md-only">arrow_down_fill</i>
+          </button>
+        </span><br><br>
+      </div>
+          <!--tranfer-->
+
+            <div id="tab-4" class="page-content tab">
+              <div class="list no-hairlines-md">
+      <ul>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+            <select onchange="setSharesInfo(this, 'transfer');" onselect="setSharesInfo(this, 'transfer');" id="selected_shares_id_transfer_main" name="Choose Shares">
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Choose Shares</div>
+              </div>
+            </div>
+          </a>
+        </li>
+         <br>
+            <div  style="color: red; margin-right: 10%; margin-left: 10%;" id="currentavailabletitle_transfer_main" class="item-title item-label">Choose Shares</div> <br>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Amount of Shares to be transferred</div>
+            <div class="item-input-wrap">
+              <input type="number" id="shares_amount_transfer_main" placeholder="Amount of Shares to be transferred">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Pott Name of person you are transferring to</div>
+            <div class="item-input-wrap">
+              <input id="receiver_pottname_transfer_main" type="text" placeholder="Pott Name of person you are transferring to">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li style="display: none;" class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Password</div>
+            <div class="item-input-wrap">
+              <input type="password" id="my_password_transfer_main" placeholder="Password">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <br>
+      <button onclick="transferShares();" class="button button-fill color-green">Transfer</button>
+    </div>
+            </div>
+      </div>  
+          <!--pott-->
+   
+       <div id="tab-5" class="page-content tab">
+
+
+          <div style="height: 350px; background-color: #fff; text-align: box-shadow: 0 1px 2px rgba(0,0,0,.3); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.3); border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;">
+          <div style="width: 100%; height: 120px; background-color: #000;">
+            <a href="#" class="link popover-open" data-popover=".popover-pott" style="float: right; margin-right: 20px; padding-top: 20px;"><i class="icon f7-icons ios-only" style="font-size: 20px; color: #fff;">more_vertical</i></a>
+                   <!--pott page menu content-->
+          <div class="popover popover-pott">
+    <div class="popover-angle"></div>
+    <div class="popover-inner">
+      <div class="list" style="font-size: 14px;">
+        <ul>
+          <li onclick="cashoutPearls();">
+            <a class="list-button item-link popover-close" style="line-height: 30px;">CashOut Pearls</a>
+          </li>
+          <li><a href="#" class="list-button item-link popover-close popup-open" data-popup=".settlement" style="line-height: 30px;">Set Settlement Account</a></li>
+          <li onmousedown="checkLongPressStart('send_tokens');" onmouseup="checkLongPressEnd();" ><a href="/panel/" class="list-button item-link popover-close popup-open" data-popup=".contact" style="line-height: 30px;">Contact FishPot Inc.</a></li>
+         </ul>
+      </div>
+    </div>
+  </div>
+  <!-- end of pott page menu contnet-->
+          </div>
+           <div style="margin-top: -50px;">
+            <div id="pott_profilepic_mine_main" style="border: solid; border-color: #fff; background-image: url(img/avatar.png); background-size: cover; position: relative; width: 100px; padding-top: 100px; border-radius: 50%; text-align: center;  margin: 0 auto;">
+       </div>
+     </div>
+     <p style="text-align: center; font-style: bold; font-weight: 800; font-size: 18px; margin: 0.5em 0;" id="pott_fullname_mine_main">...</p>
+     <p style="text-align: center; margin: 0.5em 0;" id="pott_pottname_mine_main">...</p>
+     <p style="text-align: center; margin: 0.5em 0;" id="pott_investorlevel_mine_main">...</p>
+     <p style="text-align: center; margin: 0.5em 0;" id="pott_country_mine_main"></p>
+<div class="row">
+        <div class="col-15"></div>
+        <div class="col-35"> 
+          <button id="cart_proceed_btn" onclick="getCartItems()" onmousedown="checkLongPressStart('');" onmouseup="checkLongPressEnd();" class="button button-big button-fill popup-open" data-popup=".cart"> Globe Cart</button>
+        </div>
+        <div class="col-35"> 
+          <button onclick="buyShield();" class="button button-big button-outline">Buy Shield</button>
+        </div>
+        <div class="col-15"></div>
+      </div>
+  </div>
+  <div class="card" style="margin-right: 0; margin-left: 0;">
+     <div class="row" style="text-align: center;">
+        <div class="col popup-open" data-popup=".links" onclick="getLinks('linkups', '???', '')">
+          <p style=" padding-left: 10px;">
+            <span style="font-size: 16px; font-style: bold; font-weight: 800;" id="pott_linkupsnum_mine_main">...</span> <br>Linkups
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            <span style="font-size: 16px; font-style: bold; font-weight: 800;" id="pott_pearls_mine_main">...</span> <br>Pott Pearls
+          </p>
+        </div>
+        <div class="col popup-open" data-popup=".links" onclick="getLinks('linked', '???', '')">
+          <p>
+            <span style="font-size: 16px; font-style: bold; font-weight: 800;" id="pott_linkednum_mine_main">...</span><br>
+            Linked
+          </p>
+        </div>
+      </div>
+  </div>
+   <div class="card" style="margin-right: 0; margin-left: 0;">
+     <div class="row" style="text-align: center;">
+        <div onclick="getSearchOrPottDataForOption('my_pott', 'up4sale_option', '', 'mypott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_yardsale_icon_mypott" class="icon f7-icons ios-only">tags_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('my_pott', 'sharessale_option', '', 'mypott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_sharesale_icon_mypott" class="icon f7-icons ios-only">briefcase_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('my_pott', 'event_option', '', 'mypott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_event_icon_mypott" class="icon f7-icons ios-only">calendar_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('my_pott', 'fundraiser_option', '', 'mypott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_fundraiser_icon_mypott" class="icon f7-icons ios-only">persons_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('my_pott', 'videos_option', '', 'mypott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_videos_icon_mypott" class="icon f7-icons ios-only">film_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('my_pott', 'news_option', '', 'mypott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_posts_icon_mypott" class="icon f7-icons ios-only">world_fill</i>
+          </p>
+        </div>
+      </div>
+  </div>
+
+    <!-- pott page feed-->
+<div>
+  <span id="mypott_results_holder">
+    
+  </span>
+    <br>
+    <span onclick="getSearchOrPottDataForOption('my_pott', '', '', 'mypott_results_holder', '');" style="margin-left: 50%">
+          <button class="button button-big button-fill">
+      <i class="icon f7-icons ios-only">arrow_down_fill</i>
+      <i class="icon material-icons md-only">arrow_down_fill</i>
+          </button>
+     </span><br><br>
+</div><!-- end shared post with comment card-->
+
+</div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--comments-->
+
+  <div class="popup comments">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Comments</div>
+<div class="right"><a onclick="document.getElementById('be_first_to_comment_info').style.display = 'none';document.getElementById('comments_holder').innerHTML = '';" href="#" class="link popup-close"><i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only" style="display: inline;">close</i></a></div>
+          </div>
+        </div>
+           <div class="toolbar messagebar">
+      <div class="toolbar-inner">
+        <a style="display: none;" class="link icon-only">
+          <i class="icon f7-icons ios-only">camera_fill</i>
+          <i class="icon material-icons md-only">camera_alt</i>
+        </a>
+        <div class="messagebar-area">
+          <textarea id="comment_input_main" class="resizable" placeholder="Leave Comment"></textarea>
+        </div>
+        <div onclick="postComment(this);" id="post_comment_btn_main" data-newsid="">
+        <a class="link icon-only demo-send-message-link">
+          <i class="icon f7-icons ios-only">arrow_up_fill</i>
+          <i class="icon material-icons md-only">send</i>
+        </a>
+      </div>
+
+      </div>
+    </div>
+      <div class="page-content messages-content">
+      <div class="messages">
+        <span id="be_first_to_comment_info" style="width: 100%; margin-top: 40%; text-align: center;">
+        <a href="#"  class="link">
+          <i class="icon material-icons md-only" style="font-size: 100px;">chat_bubble_outline</i>
+          <i class="icon f7-icons ios-only" style="font-size: 100px;">chat</i>
+        </a>
+          <br>
+          <br>
+          <br>
+          <p>Be the first to comment</p>
+        </span>
+        <span  id="comments_holder">
+          
+        </span>
+         <!-- <div class="messages-title"><b>Sunday, Feb 9,</b> 12:58</div>-->
+      <!--
+      <div class="message message-received">
+          <div class="message-avatar" style="background-image:url(' + news_maker_pro_pic + '); opacity: 1;"></div>
+          <div class="message-content">
+            <div class="message-name" style="display: block;">'+ news_maker_full_name +' | @'+ news_maker_pottname +' <i class="icon f7-icons ios-only" style="font-size: 13px; color : #3399ff;display: ' + news_maker_verified_status_display_style + '">check_round_fill</i></div>
+            <div class="message-bubble">
+              <div class="message-text">' + news_type + '<br><span style="float: right; font-size: 10px;">'+ news_date +' </span></div>
+            </div>
+          </div>
+        </div>
+        <br>
+      -->
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+<!--settlement account-->
+
+  <div class="popup settlement">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Settlement Account</div>
+            <div class="right">
+              <a id="close_settlement_account_main" href="#" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+                <div class="page-content">
+           <div class="list no-hairlines-md">
+      <ul>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+            <select name="Country Of Holding" id="settlement_acc_country_main">
+  <option value="" data-CountryCodeReal="" selected>Choose Country Holding Account</option>
+  <option value="USA" data-CountryCodeReal="1">USA</option>
+  <option value="United Kingdom" data-CountryCodeReal="44">United Kingdom</option>
+  <option value="Ghana" data-CountryCodeReal="233">Ghana</option>
+
+  <option disabled="disabled">Other Countries</option>
+  <option value="Algeria" data-CountryCodeReal="213">Algeria</option>
+  <option value="Andorra" data-CountryCodeReal="376">Andorra</option>
+  <option value="Angola" data-CountryCodeReal="244">Angola</option>
+  <option value="Anguilla" data-CountryCodeReal="1264">Anguilla</option>
+  <option value="Antigua" data-CountryCodeReal="1268">Antigua &amp; Barbuda</option>
+  <option value="Argentina" data-CountryCodeReal="54">Argentina</option>
+  <option value="Armenia" data-CountryCodeReal="374">Armenia</option>
+  <option value="Aruba" data-CountryCodeReal="297">Aruba</option>
+  <option value="Australia" data-CountryCodeReal="61">Australia</option>
+  <option value="Austria" data-CountryCodeReal="43">Austria</option>
+  <option value="Azerbaijan" data-CountryCodeReal="994">Azerbaijan</option>
+  <option value="Bahamas" data-CountryCodeReal="1242">Bahamas</option>
+  <option value="Bahrain" data-CountryCodeReal="973">Bahrain</option>
+  <option value="Bangladesh" data-CountryCodeReal="880">Bangladesh</option>
+  <option value="Barbados" data-CountryCodeReal="1246">Barbados</option>
+  <option value="Belarus" data-CountryCodeReal="375">Belarus</option>
+  <option value="Belgium" data-CountryCodeReal="32">Belgium</option>
+  <option value="Belize" data-CountryCodeReal="501">Belize</option>
+  <option value="Benin" data-CountryCodeReal="229">Benin</option>
+  <option value="Bermuda" data-CountryCodeReal="1441">Bermuda</option>
+  <option value="Bhutan" data-CountryCodeReal="975">Bhutan</option>
+  <option value="Bolivia" data-CountryCodeReal="591">Bolivia</option>
+  <option value="Bosnia Herzegovina" data-CountryCodeReal="387">Bosnia Herzegovina</option>
+  <option value="Botswana" data-CountryCodeReal="267">Botswana</option>
+  <option value="Brazil" data-CountryCodeReal="55">Brazil</option>
+  <option value="Brunei" data-CountryCodeReal="673">Brunei</option>
+  <option value="Bulgaria" data-CountryCodeReal="359">Bulgaria</option>
+  <option value="Burkina Faso" data-CountryCodeReal="226">Burkina Faso</option>
+  <option value="Burundi" data-CountryCodeReal="257">Burundi</option>
+  <option value="Cambodia" data-CountryCodeReal="855">Cambodia</option>
+  <option value="Cameroon" data-CountryCodeReal="237">Cameroon</option>
+  <option value="Canada" data-CountryCodeReal="1">Canada</option>
+  <option value="Cape Verde Islands" data-CountryCodeReal="238">Cape Verde Islands</option>
+  <option value="Cayman Islands" data-CountryCodeReal="1345">Cayman Islands</option>
+  <option value="Central African Republic" data-CountryCodeReal="236">Central African Republic</option>
+  <option value="Chile" data-CountryCodeReal="56">Chile</option>
+  <option value="China" data-CountryCodeReal="86">China</option>
+  <option value="Colombia" data-CountryCodeReal="57">Colombia</option>
+  <option value="Comoros" data-CountryCodeReal="269">Comoros</option>
+  <option value="Congo" data-CountryCodeReal="242">Congo</option>
+  <option value="Cook Islands" data-CountryCodeReal="682">Cook Islands</option>
+  <option value="Costa Rica" data-CountryCodeReal="506">Costa Rica</option>
+  <option value="Croatia" data-CountryCodeReal="385">Croatia</option>
+  <!-- <option value="CU" data-CountryCodeReal="53">Cuba</option> -->
+  <option value="Cyprus - North" data-CountryCodeReal="90">Cyprus - North</option>
+  <option value="Cyprus - South" data-CountryCodeReal="357">Cyprus - South</option>
+  <option value="Czech Republic" data-CountryCodeReal="420">Czech Republic</option>
+  <option value="Denmark" data-CountryCodeReal="45">Denmark</option>
+  <option value="Djibouti" data-CountryCodeReal="253">Djibouti</option>
+  <option value="Dominica" data-CountryCodeReal="1809">Dominica</option>
+  <option value="Dominican Republic" data-CountryCodeReal="1809">Dominican Republic</option>
+  <option value="Ecuador" data-CountryCodeReal="593">Ecuador</option>
+  <option value="Egypt" data-CountryCodeReal="20">Egypt</option>
+  <option value="El Salvador" data-CountryCodeReal="503">El Salvador</option>
+  <option value="Equatorial Guinea" data-CountryCodeReal="240">Equatorial Guinea</option>
+  <option value="Eritrea" data-CountryCodeReal="291">Eritrea</option>
+  <option value="Estonia" data-CountryCodeReal="372">Estonia</option>
+  <option value="Ethiopia" data-CountryCodeReal="251">Ethiopia</option>
+  <option value="Falkland Islands" data-CountryCodeReal="500">Falkland Islands</option>
+  <option value="Faroe Islands" data-CountryCodeReal="298">Faroe Islands</option>
+  <option value="Fiji" data-CountryCodeReal="679">Fiji</option>
+  <option value="Finland" data-CountryCodeReal="358">Finland</option>
+  <option value="France" data-CountryCodeReal="33">France</option>
+  <option value="French Guiana" data-CountryCodeReal="594">French Guiana</option>
+  <option value="French Polynesia" data-CountryCodeReal="689">French Polynesia</option>
+  <option value="Gabon" data-CountryCodeReal="241">Gabon</option>
+  <option value="Gambia" data-CountryCodeReal="220">Gambia</option>
+  <option value="Georgia" data-CountryCodeReal="7880">Georgia</option>
+  <option value="Germany" data-CountryCodeReal="49">Germany</option>
+  <option value="Gibraltar" data-CountryCodeReal="350">Gibraltar</option>
+  <option value="Greece" data-CountryCodeReal="30">Greece</option>
+  <option value="Greenland" data-CountryCodeReal="299">Greenland</option>
+  <option value="Grenada" data-CountryCodeReal="1473">Grenada</option>
+  <option value="Guadeloupe" data-CountryCodeReal="590">Guadeloupe</option>
+  <option value="Guam" data-CountryCodeReal="671">Guam</option>
+  <option value="Guatemala" data-CountryCodeReal="502">Guatemala</option>
+  <option value="Guinea" data-CountryCodeReal="224">Guinea</option>
+  <option value="Guinea - Bissau" data-CountryCodeReal="245">Guinea - Bissau</option>
+  <option value="Guyana" data-CountryCodeReal="592">Guyana</option>
+  <option value="Haiti" data-CountryCodeReal="509">Haiti</option>
+  <option value="Honduras" data-CountryCodeReal="504">Honduras</option>
+  <option value="Hong Kong" data-CountryCodeReal="852">Hong Kong</option>
+  <option value="Hungary" data-CountryCodeReal="36">Hungary</option>
+  <option value="Iceland" data-CountryCodeReal="354">Iceland</option>
+  <option value="India" data-CountryCodeReal="91">India</option>
+  <option value="Indonesia" data-CountryCodeReal="62">Indonesia</option>
+  <option value="Iraq" data-CountryCodeReal="964">Iraq</option>
+  <!-- <option value="IR" data-CountryCodeReal="98">Iran (+98)</option> -->
+  <option value="Ireland" data-CountryCodeReal="353">Ireland</option>
+  <option value="Israel" data-CountryCodeReal="972">Israel</option>
+  <option value="Italy" data-CountryCodeReal="39">Italy</option>
+  <option value="Jamaica" data-CountryCodeReal="1876">Jamaica</option>
+  <option value="Japan" data-CountryCodeReal="81">Japan</option>
+  <option value="Jordan" data-CountryCodeReal="962">Jordan</option>
+  <option value="Kazakhstan" data-CountryCodeReal="7">Kazakhstan</option>
+  <option value="Kenya" data-CountryCodeReal="254">Kenya</option>
+  <option value="Kiribati" data-CountryCodeReal="686">Kiribati</option>
+  <!-- <option value="KP" data-CountryCodeReal="850">Korea - North (+850)</option> -->
+  <option value="Korea" data-CountryCodeReal="82">Korea - South</option>
+  <option value="Kuwait" data-CountryCodeReal="965">Kuwait</option>
+  <option value="Kyrgyzstan" data-CountryCodeReal="996">Kyrgyzstan</option>
+  <option value="Laos" data-CountryCodeReal="856">Laos</option>
+  <option value="Latvia" data-CountryCodeReal="371">Latvia</option>
+  <option value="Lebanon" data-CountryCodeReal="961">Lebanon</option>
+  <option value="Lesotho" data-CountryCodeReal="266">Lesotho </option>
+  <option value="Liberia" data-CountryCodeReal="231">Liberia</option>
+  <option value="Libya" data-CountryCodeReal="218">Libya</option>
+  <option value="Liechtenstein" data-CountryCodeReal="417">Liechtenstein</option>
+  <option value="Lithuania" data-CountryCodeReal="370">Lithuania</option>
+  <option value="Luxembourg" data-CountryCodeReal="352">Luxembourg</option>
+  <option value="Macao" data-CountryCodeReal="853">Macao</option>
+  <option value="Macedonia" data-CountryCodeReal="389">Macedonia</option>
+  <option value="Madagascar" data-CountryCodeReal="261">Madagascar</option>
+  <option value="Malawi" data-CountryCodeReal="265">Malawi</option>
+  <option value="Malaysia" data-CountryCodeReal="60">Malaysia</option>
+  <option value="Maldives" data-CountryCodeReal="960">Maldives</option>
+  <option value="Mali" data-CountryCodeReal="223">Mali</option>
+  <option value="Malta" data-CountryCodeReal="356">Malta</option>
+  <option value="Marshall Islands" data-CountryCodeReal="692">Marshall Islands</option>
+  <option value="Martinique" data-CountryCodeReal="596">Martinique</option>
+  <option value="Mauritania" data-CountryCodeReal="222">Mauritania</option>
+  <option value="Mayotte" data-CountryCodeReal="269">Mayotte</option>
+  <option value="Mexico" data-CountryCodeReal="52">Mexico</option>
+  <option value="Micronesia" data-CountryCodeReal="691">Micronesia</option>
+  <option value="Moldova" data-CountryCodeReal="373">Moldova</option>
+  <option value="Monaco" data-CountryCodeReal="377">Monaco</option>
+  <option value="Mongolia" data-CountryCodeReal="976">Mongolia</option>
+  <option value="Montserrat" data-CountryCodeReal="1664">Montserrat</option>
+  <option value="Morocco" data-CountryCodeReal="212">Morocco</option>
+  <option value="Mozambique" data-CountryCodeReal="258">Mozambique</option>
+  <option value="Myanmar" data-CountryCodeReal="95">Myanmar</option>
+  <option value="Namibia" data-CountryCodeReal="264">Namibia</option>
+  <option value="Nauru" data-CountryCodeReal="674">Nauru</option>
+  <option value="Nepal" data-CountryCodeReal="977">Nepal</option>
+  <option value="Netherlands" data-CountryCodeReal="31">Netherlands</option>
+  <option value="New Caledonia" data-CountryCodeReal="687">New Caledonia</option>
+  <option value="New Zealand" data-CountryCodeReal="64">New Zealand</option>
+  <option value="Nicaragua" data-CountryCodeReal="505">Nicaragua</option>
+  <option value="Niger" data-CountryCodeReal="227">Niger</option>
+  <option value="Nigeria" data-CountryCodeReal="234">Nigeria</option>
+  <option value="Niue" data-CountryCodeReal="683">Niue</option>
+  <option value="Norfolk Islands" data-CountryCodeReal="672">Norfolk Islands</option>
+  <option value="Northern Marianas" data-CountryCodeReal="670">Northern Marianas</option>
+  <option value="Norway" data-CountryCodeReal="47">Norway</option>
+  <option value="Oman" data-CountryCodeReal="968">Oman</option>
+  <option value="Pakistan" data-CountryCodeReal="92">Pakistan</option>
+  <option value="Palau" data-CountryCodeReal="680">Palau</option>
+  <option value="Panama" data-CountryCodeReal="507">Panama</option>
+  <option value="Papua New Guinea" data-CountryCodeReal="675">Papua New Guinea</option>
+  <option value="Paraguay" data-CountryCodeReal="595">Paraguay</option>
+  <option value="Peru" data-CountryCodeReal="51">Peru</option>
+  <option value="Philippines" data-CountryCodeReal="63">Philippines</option>
+  <option value="Poland" data-CountryCodeReal="48">Poland</option>
+  <option value="Portugal" data-CountryCodeReal="351">Portugal</option>
+  <option value="Puerto Rico" data-CountryCodeReal="1787">Puerto Rico</option>
+  <option value="Qatar" data-CountryCodeReal="974">Qatar</option>
+  <option value="Reunion" data-CountryCodeReal="262">Reunion</option>
+  <option value="Romania" data-CountryCodeReal="40">Romania</option>
+  <option value="Russia" data-CountryCodeReal="7">Russia</option>
+  <option value="Rwanda" data-CountryCodeReal="250">Rwanda</option>
+  <option value="San Marino" data-CountryCodeReal="378">San Marino</option>
+  <option value="Sao Tome & Principe" data-CountryCodeReal="239">Sao Tome &amp; Principe</option>
+  <option value="Saudi Arabia" data-CountryCodeReal="966">Saudi Arabia</option>
+  <option value="Senegal" data-CountryCodeReal="221">Senegal</option>
+  <option value="Serbia" data-CountryCodeReal="381">Serbia</option>
+  <option value="Seychelles" data-CountryCodeReal="248">Seychelles</option>
+  <option value="Sierra Leone" data-CountryCodeReal="232">Sierra Leone</option>
+  <option value="Singapore" data-CountryCodeReal="65">Singapore</option>
+  <option value="Slovak Republic" data-CountryCodeReal="421">Slovak Republic</option>
+  <option value="Slovenia" data-CountryCodeReal="386">Slovenia</option>
+  <option value="Solomon Islands" data-CountryCodeReal="677">Solomon Islands</option>
+  <option value="Somalia" data-CountryCodeReal="252">Somalia</option>
+  <option value="South Africa" data-CountryCodeReal="27">South Africa</option>
+  <option value="Spain" data-CountryCodeReal="34">Spain</option>
+  <option value="Sri Lanka" data-CountryCodeReal="94">Sri Lanka</option>
+  <option value="St. Helena" data-CountryCodeReal="290">St. Helena</option>
+  <option value="St. Kitts" data-CountryCodeReal="1869">St. Kitts</option>
+  <option value="St. Lucia" data-CountryCodeReal="1758">St. Lucia</option>
+  <option value="Suriname" data-CountryCodeReal="597">Suriname</option>
+  <option value="Sudan" data-CountryCodeReal="249">Sudan</option>
+  <option value="Swaziland" data-CountryCodeReal="268">Swaziland</option>
+  <option value="Sweden" data-CountryCodeReal="46">Sweden</option>
+  <option value="Switzerland" data-CountryCodeReal="41">Switzerland</option>
+  <!-- <option value="SY" data-CountryCodeReal="963">Syria (+963)</option> -->
+  <option value="Taiwan" data-CountryCodeReal="886">Taiwan</option>
+  <option value="Tajikistan" data-CountryCodeReal="992">Tajikistan</option>
+  <option value="Thailand" data-CountryCodeReal="66">Thailand</option>
+  <option value="Togo" data-CountryCodeReal="228">Togo</option>
+  <option value="Tonga" data-CountryCodeReal="676">Tonga</option>
+  <option value="Trinidad" data-CountryCodeReal="1868">Trinidad &amp; Tobago</option>
+  <option value="Tunisia" data-CountryCodeReal="216">Tunisia</option>
+  <option value="Turkey" data-CountryCodeReal="90">Turkey</option>
+  <option value="Turkmenistan" data-CountryCodeReal="993">Turkmenistan</option>
+  <option value="Turks" data-CountryCodeReal="1649">Turks &amp; Caicos Islands</option>
+  <option value="Tuvalu" data-CountryCodeReal="688">Tuvalu</option>
+  <option value="Uganda" data-CountryCodeReal="256">Uganda</option>
+  <option value="Ukraine" data-CountryCodeReal="380">Ukraine</option>
+  <option value="United" data-CountryCodeReal="971">United Arab Emirates</option>
+  <option value="Uruguay" data-CountryCodeReal="598">Uruguay</option>
+  <option value="Uzbekistan" data-CountryCodeReal="998">Uzbekistan</option>
+  <option value="Vanuatu" data-CountryCodeReal="678">Vanuatu</option>
+  <option value="Vatican City" data-CountryCodeReal="379">Vatican City</option>
+  <option value="Venezuela" data-CountryCodeReal="58">Venezuela</option>
+  <option value="Vietnam" data-CountryCodeReal="84">Vietnam</option>
+  <option value="Virgin Islands - British" data-CountryCodeReal="1">Virgin Islands - British</option>
+  <option value="Virgin Islands - US" data-CountryCodeReal="1">Virgin Islands - US</option>
+  <option value="Wallis & Futuna" data-CountryCodeReal="681">Wallis &amp; Futuna</option>
+  <option value="Yemen (North)" data-CountryCodeReal="969">Yemen (North)</option>
+  <option value="Yemen (South)" data-CountryCodeReal="967">Yemen (South)</option>
+  <option value="Zambia" data-CountryCodeReal="260">Zambia</option>
+  <option value="Zimbabwe" data-CountryCodeReal="263">Zimbabwe</option> 
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Country Of Holding</div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+            <select id="settlement_acc_type_main" name="Type Of Account">
+              <option value="Bank Account" selected>Bank Account</option>
+              <option value="Mobile Money">Mobile Money</option>
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Type Of Account</div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Bank Name / Mobile Network Name</div>
+            <div class="item-input-wrap">
+              <input id="settlement_bank_network_name_main" type="text" placeholder="Bank Name / Mobile Network Name">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Account Number / Mobile Money Number</div>
+            <div class="item-input-wrap">
+              <input id="settlement_acc_number_main" type="text" placeholder="Account No. / Mobile Money No.">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Routing Number (Bank Account Only)</div>
+            <div class="item-input-wrap">
+              <input  id="settlement_routing_number_main" type="text" placeholder="Routing Number (Bank Account Only)">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li style="display: none;" class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Password</div>
+            <div class="item-input-wrap">
+              <input type="password" placeholder="Password">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"> 
+          <button onclick="setSettlementAccount();" class="button button-big button-outline">Save</button>
+        </div>
+        <div class="col"></div>
+      </div>
+</div>
+    </div>
+    </div>
+
+
+<!--contact fishpot-->
+
+  <div class="popup contact">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Contact FishPot Inc.</div>
+            <div class="right"><a href="#" class="link popup-close"><i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only" style="display: inline;">close</i></a></div>
+          </div>
+        </div>
+                <div class="page-content">
+           <div class="list no-hairlines-md">
+      <ul>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Please Type Your Message</div>
+            <div class="item-input-wrap">
+              <textarea class="resizable" id="contact_input_main" placeholder="Please Type Your Message"></textarea>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"> 
+          <button onclick="sendMessageToFishPot();" class="button button-big button-outline">Send</button>
+        </div>
+        <div class="col"></div>
+      </div>
+</div>
+    </div>
+    </div>
+
+
+
+<!-- ADVERT BUY POP UP END -->
+
+      <div class="popup boost">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title">Advertisement</div>
+            <div class="right">
+              <a href="#" id="close_advert_transaction_main" onclick="fixSaleForm('advert');" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+        <div class="block block-strong">
+      <p style="font-size: 12px;">FishPott Adverts are well targetted to give you the best exposure.<br><br><span style="color: green;">Please note that you will be charged in the equivalent cedis of the currency stated</span></p>
+    </div>
+    <div id="advert_stage_1_form_main" class="list no-hairlines-md">
+
+      <ul>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">How many days do you want to advertise</div>
+            <div class="item-input-wrap">
+              <input type="number" id="advert_days_main" min="1" placeholder="Advert Duration - Days">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Minimum age to see your advert</div>
+            <div class="item-input-wrap">
+              <input id="advert_minimum_age_main" type="number" min="13" placeholder="Minimum age">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Maximum age to see your advert</div>
+            <div class="item-input-wrap">
+              <input id="advert_maximum_age_main" type="number" min="200" placeholder="Maximum age">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+            <select id="advert_country_main" name="country">
+  <option value="" data-CountryCodeReal="" selected>Choose Country</option>
+  <option value="USA" data-CountryCodeReal="1">USA</option>
+  <option value="United Kingdom" data-CountryCodeReal="44">United Kingdom</option>
+  <option value="Ghana" data-CountryCodeReal="233">Ghana</option>
+
+  <option disabled="disabled">Other Countries</option>
+  <option value="Algeria" data-CountryCodeReal="213">Algeria</option>
+  <option value="Andorra" data-CountryCodeReal="376">Andorra</option>
+  <option value="Angola" data-CountryCodeReal="244">Angola</option>
+  <option value="Anguilla" data-CountryCodeReal="1264">Anguilla</option>
+  <option value="Antigua" data-CountryCodeReal="1268">Antigua &amp; Barbuda</option>
+  <option value="Argentina" data-CountryCodeReal="54">Argentina</option>
+  <option value="Armenia" data-CountryCodeReal="374">Armenia</option>
+  <option value="Aruba" data-CountryCodeReal="297">Aruba</option>
+  <option value="Australia" data-CountryCodeReal="61">Australia</option>
+  <option value="Austria" data-CountryCodeReal="43">Austria</option>
+  <option value="Azerbaijan" data-CountryCodeReal="994">Azerbaijan</option>
+  <option value="Bahamas" data-CountryCodeReal="1242">Bahamas</option>
+  <option value="Bahrain" data-CountryCodeReal="973">Bahrain</option>
+  <option value="Bangladesh" data-CountryCodeReal="880">Bangladesh</option>
+  <option value="Barbados" data-CountryCodeReal="1246">Barbados</option>
+  <option value="Belarus" data-CountryCodeReal="375">Belarus</option>
+  <option value="Belgium" data-CountryCodeReal="32">Belgium</option>
+  <option value="Belize" data-CountryCodeReal="501">Belize</option>
+  <option value="Benin" data-CountryCodeReal="229">Benin</option>
+  <option value="Bermuda" data-CountryCodeReal="1441">Bermuda</option>
+  <option value="Bhutan" data-CountryCodeReal="975">Bhutan</option>
+  <option value="Bolivia" data-CountryCodeReal="591">Bolivia</option>
+  <option value="Bosnia Herzegovina" data-CountryCodeReal="387">Bosnia Herzegovina</option>
+  <option value="Botswana" data-CountryCodeReal="267">Botswana</option>
+  <option value="Brazil" data-CountryCodeReal="55">Brazil</option>
+  <option value="Brunei" data-CountryCodeReal="673">Brunei</option>
+  <option value="Bulgaria" data-CountryCodeReal="359">Bulgaria</option>
+  <option value="Burkina Faso" data-CountryCodeReal="226">Burkina Faso</option>
+  <option value="Burundi" data-CountryCodeReal="257">Burundi</option>
+  <option value="Cambodia" data-CountryCodeReal="855">Cambodia</option>
+  <option value="Cameroon" data-CountryCodeReal="237">Cameroon</option>
+  <option value="Canada" data-CountryCodeReal="1">Canada</option>
+  <option value="Cape Verde Islands" data-CountryCodeReal="238">Cape Verde Islands</option>
+  <option value="Cayman Islands" data-CountryCodeReal="1345">Cayman Islands</option>
+  <option value="Central African Republic" data-CountryCodeReal="236">Central African Republic</option>
+  <option value="Chile" data-CountryCodeReal="56">Chile</option>
+  <option value="China" data-CountryCodeReal="86">China</option>
+  <option value="Colombia" data-CountryCodeReal="57">Colombia</option>
+  <option value="Comoros" data-CountryCodeReal="269">Comoros</option>
+  <option value="Congo" data-CountryCodeReal="242">Congo</option>
+  <option value="Cook Islands" data-CountryCodeReal="682">Cook Islands</option>
+  <option value="Costa Rica" data-CountryCodeReal="506">Costa Rica</option>
+  <option value="Croatia" data-CountryCodeReal="385">Croatia</option>
+  <!-- <option value="CU" data-CountryCodeReal="53">Cuba</option> -->
+  <option value="Cyprus - North" data-CountryCodeReal="90">Cyprus - North</option>
+  <option value="Cyprus - South" data-CountryCodeReal="357">Cyprus - South</option>
+  <option value="Czech Republic" data-CountryCodeReal="420">Czech Republic</option>
+  <option value="Denmark" data-CountryCodeReal="45">Denmark</option>
+  <option value="Djibouti" data-CountryCodeReal="253">Djibouti</option>
+  <option value="Dominica" data-CountryCodeReal="1809">Dominica</option>
+  <option value="Dominican Republic" data-CountryCodeReal="1809">Dominican Republic</option>
+  <option value="Ecuador" data-CountryCodeReal="593">Ecuador</option>
+  <option value="Egypt" data-CountryCodeReal="20">Egypt</option>
+  <option value="El Salvador" data-CountryCodeReal="503">El Salvador</option>
+  <option value="Equatorial Guinea" data-CountryCodeReal="240">Equatorial Guinea</option>
+  <option value="Eritrea" data-CountryCodeReal="291">Eritrea</option>
+  <option value="Estonia" data-CountryCodeReal="372">Estonia</option>
+  <option value="Ethiopia" data-CountryCodeReal="251">Ethiopia</option>
+  <option value="Falkland Islands" data-CountryCodeReal="500">Falkland Islands</option>
+  <option value="Faroe Islands" data-CountryCodeReal="298">Faroe Islands</option>
+  <option value="Fiji" data-CountryCodeReal="679">Fiji</option>
+  <option value="Finland" data-CountryCodeReal="358">Finland</option>
+  <option value="France" data-CountryCodeReal="33">France</option>
+  <option value="French Guiana" data-CountryCodeReal="594">French Guiana</option>
+  <option value="French Polynesia" data-CountryCodeReal="689">French Polynesia</option>
+  <option value="Gabon" data-CountryCodeReal="241">Gabon</option>
+  <option value="Gambia" data-CountryCodeReal="220">Gambia</option>
+  <option value="Georgia" data-CountryCodeReal="7880">Georgia</option>
+  <option value="Germany" data-CountryCodeReal="49">Germany</option>
+  <option value="Gibraltar" data-CountryCodeReal="350">Gibraltar</option>
+  <option value="Greece" data-CountryCodeReal="30">Greece</option>
+  <option value="Greenland" data-CountryCodeReal="299">Greenland</option>
+  <option value="Grenada" data-CountryCodeReal="1473">Grenada</option>
+  <option value="Guadeloupe" data-CountryCodeReal="590">Guadeloupe</option>
+  <option value="Guam" data-CountryCodeReal="671">Guam</option>
+  <option value="Guatemala" data-CountryCodeReal="502">Guatemala</option>
+  <option value="Guinea" data-CountryCodeReal="224">Guinea</option>
+  <option value="Guinea - Bissau" data-CountryCodeReal="245">Guinea - Bissau</option>
+  <option value="Guyana" data-CountryCodeReal="592">Guyana</option>
+  <option value="Haiti" data-CountryCodeReal="509">Haiti</option>
+  <option value="Honduras" data-CountryCodeReal="504">Honduras</option>
+  <option value="Hong Kong" data-CountryCodeReal="852">Hong Kong</option>
+  <option value="Hungary" data-CountryCodeReal="36">Hungary</option>
+  <option value="Iceland" data-CountryCodeReal="354">Iceland</option>
+  <option value="India" data-CountryCodeReal="91">India</option>
+  <option value="Indonesia" data-CountryCodeReal="62">Indonesia</option>
+  <option value="Iraq" data-CountryCodeReal="964">Iraq</option>
+  <!-- <option value="IR" data-CountryCodeReal="98">Iran (+98)</option> -->
+  <option value="Ireland" data-CountryCodeReal="353">Ireland</option>
+  <option value="Israel" data-CountryCodeReal="972">Israel</option>
+  <option value="Italy" data-CountryCodeReal="39">Italy</option>
+  <option value="Jamaica" data-CountryCodeReal="1876">Jamaica</option>
+  <option value="Japan" data-CountryCodeReal="81">Japan</option>
+  <option value="Jordan" data-CountryCodeReal="962">Jordan</option>
+  <option value="Kazakhstan" data-CountryCodeReal="7">Kazakhstan</option>
+  <option value="Kenya" data-CountryCodeReal="254">Kenya</option>
+  <option value="Kiribati" data-CountryCodeReal="686">Kiribati</option>
+  <!-- <option value="KP" data-CountryCodeReal="850">Korea - North (+850)</option> -->
+  <option value="Korea" data-CountryCodeReal="82">Korea - South</option>
+  <option value="Kuwait" data-CountryCodeReal="965">Kuwait</option>
+  <option value="Kyrgyzstan" data-CountryCodeReal="996">Kyrgyzstan</option>
+  <option value="Laos" data-CountryCodeReal="856">Laos</option>
+  <option value="Latvia" data-CountryCodeReal="371">Latvia</option>
+  <option value="Lebanon" data-CountryCodeReal="961">Lebanon</option>
+  <option value="Lesotho" data-CountryCodeReal="266">Lesotho </option>
+  <option value="Liberia" data-CountryCodeReal="231">Liberia</option>
+  <option value="Libya" data-CountryCodeReal="218">Libya</option>
+  <option value="Liechtenstein" data-CountryCodeReal="417">Liechtenstein</option>
+  <option value="Lithuania" data-CountryCodeReal="370">Lithuania</option>
+  <option value="Luxembourg" data-CountryCodeReal="352">Luxembourg</option>
+  <option value="Macao" data-CountryCodeReal="853">Macao</option>
+  <option value="Macedonia" data-CountryCodeReal="389">Macedonia</option>
+  <option value="Madagascar" data-CountryCodeReal="261">Madagascar</option>
+  <option value="Malawi" data-CountryCodeReal="265">Malawi</option>
+  <option value="Malaysia" data-CountryCodeReal="60">Malaysia</option>
+  <option value="Maldives" data-CountryCodeReal="960">Maldives</option>
+  <option value="Mali" data-CountryCodeReal="223">Mali</option>
+  <option value="Malta" data-CountryCodeReal="356">Malta</option>
+  <option value="Marshall Islands" data-CountryCodeReal="692">Marshall Islands</option>
+  <option value="Martinique" data-CountryCodeReal="596">Martinique</option>
+  <option value="Mauritania" data-CountryCodeReal="222">Mauritania</option>
+  <option value="Mayotte" data-CountryCodeReal="269">Mayotte</option>
+  <option value="Mexico" data-CountryCodeReal="52">Mexico</option>
+  <option value="Micronesia" data-CountryCodeReal="691">Micronesia</option>
+  <option value="Moldova" data-CountryCodeReal="373">Moldova</option>
+  <option value="Monaco" data-CountryCodeReal="377">Monaco</option>
+  <option value="Mongolia" data-CountryCodeReal="976">Mongolia</option>
+  <option value="Montserrat" data-CountryCodeReal="1664">Montserrat</option>
+  <option value="Morocco" data-CountryCodeReal="212">Morocco</option>
+  <option value="Mozambique" data-CountryCodeReal="258">Mozambique</option>
+  <option value="Myanmar" data-CountryCodeReal="95">Myanmar</option>
+  <option value="Namibia" data-CountryCodeReal="264">Namibia</option>
+  <option value="Nauru" data-CountryCodeReal="674">Nauru</option>
+  <option value="Nepal" data-CountryCodeReal="977">Nepal</option>
+  <option value="Netherlands" data-CountryCodeReal="31">Netherlands</option>
+  <option value="New Caledonia" data-CountryCodeReal="687">New Caledonia</option>
+  <option value="New Zealand" data-CountryCodeReal="64">New Zealand</option>
+  <option value="Nicaragua" data-CountryCodeReal="505">Nicaragua</option>
+  <option value="Niger" data-CountryCodeReal="227">Niger</option>
+  <option value="Nigeria" data-CountryCodeReal="234">Nigeria</option>
+  <option value="Niue" data-CountryCodeReal="683">Niue</option>
+  <option value="Norfolk Islands" data-CountryCodeReal="672">Norfolk Islands</option>
+  <option value="Northern Marianas" data-CountryCodeReal="670">Northern Marianas</option>
+  <option value="Norway" data-CountryCodeReal="47">Norway</option>
+  <option value="Oman" data-CountryCodeReal="968">Oman</option>
+  <option value="Pakistan" data-CountryCodeReal="92">Pakistan</option>
+  <option value="Palau" data-CountryCodeReal="680">Palau</option>
+  <option value="Panama" data-CountryCodeReal="507">Panama</option>
+  <option value="Papua New Guinea" data-CountryCodeReal="675">Papua New Guinea</option>
+  <option value="Paraguay" data-CountryCodeReal="595">Paraguay</option>
+  <option value="Peru" data-CountryCodeReal="51">Peru</option>
+  <option value="Philippines" data-CountryCodeReal="63">Philippines</option>
+  <option value="Poland" data-CountryCodeReal="48">Poland</option>
+  <option value="Portugal" data-CountryCodeReal="351">Portugal</option>
+  <option value="Puerto Rico" data-CountryCodeReal="1787">Puerto Rico</option>
+  <option value="Qatar" data-CountryCodeReal="974">Qatar</option>
+  <option value="Reunion" data-CountryCodeReal="262">Reunion</option>
+  <option value="Romania" data-CountryCodeReal="40">Romania</option>
+  <option value="Russia" data-CountryCodeReal="7">Russia</option>
+  <option value="Rwanda" data-CountryCodeReal="250">Rwanda</option>
+  <option value="San Marino" data-CountryCodeReal="378">San Marino</option>
+  <option value="Sao Tome & Principe" data-CountryCodeReal="239">Sao Tome &amp; Principe</option>
+  <option value="Saudi Arabia" data-CountryCodeReal="966">Saudi Arabia</option>
+  <option value="Senegal" data-CountryCodeReal="221">Senegal</option>
+  <option value="Serbia" data-CountryCodeReal="381">Serbia</option>
+  <option value="Seychelles" data-CountryCodeReal="248">Seychelles</option>
+  <option value="Sierra Leone" data-CountryCodeReal="232">Sierra Leone</option>
+  <option value="Singapore" data-CountryCodeReal="65">Singapore</option>
+  <option value="Slovak Republic" data-CountryCodeReal="421">Slovak Republic</option>
+  <option value="Slovenia" data-CountryCodeReal="386">Slovenia</option>
+  <option value="Solomon Islands" data-CountryCodeReal="677">Solomon Islands</option>
+  <option value="Somalia" data-CountryCodeReal="252">Somalia</option>
+  <option value="South Africa" data-CountryCodeReal="27">South Africa</option>
+  <option value="Spain" data-CountryCodeReal="34">Spain</option>
+  <option value="Sri Lanka" data-CountryCodeReal="94">Sri Lanka</option>
+  <option value="St. Helena" data-CountryCodeReal="290">St. Helena</option>
+  <option value="St. Kitts" data-CountryCodeReal="1869">St. Kitts</option>
+  <option value="St. Lucia" data-CountryCodeReal="1758">St. Lucia</option>
+  <option value="Suriname" data-CountryCodeReal="597">Suriname</option>
+  <option value="Sudan" data-CountryCodeReal="249">Sudan</option>
+  <option value="Swaziland" data-CountryCodeReal="268">Swaziland</option>
+  <option value="Sweden" data-CountryCodeReal="46">Sweden</option>
+  <option value="Switzerland" data-CountryCodeReal="41">Switzerland</option>
+  <!-- <option value="SY" data-CountryCodeReal="963">Syria (+963)</option> -->
+  <option value="Taiwan" data-CountryCodeReal="886">Taiwan</option>
+  <option value="Tajikistan" data-CountryCodeReal="992">Tajikistan</option>
+  <option value="Thailand" data-CountryCodeReal="66">Thailand</option>
+  <option value="Togo" data-CountryCodeReal="228">Togo</option>
+  <option value="Tonga" data-CountryCodeReal="676">Tonga</option>
+  <option value="Trinidad" data-CountryCodeReal="1868">Trinidad &amp; Tobago</option>
+  <option value="Tunisia" data-CountryCodeReal="216">Tunisia</option>
+  <option value="Turkey" data-CountryCodeReal="90">Turkey</option>
+  <option value="Turkmenistan" data-CountryCodeReal="993">Turkmenistan</option>
+  <option value="Turks" data-CountryCodeReal="1649">Turks &amp; Caicos Islands</option>
+  <option value="Tuvalu" data-CountryCodeReal="688">Tuvalu</option>
+  <option value="Uganda" data-CountryCodeReal="256">Uganda</option>
+  <option value="Ukraine" data-CountryCodeReal="380">Ukraine</option>
+  <option value="United" data-CountryCodeReal="971">United Arab Emirates</option>
+  <option value="Uruguay" data-CountryCodeReal="598">Uruguay</option>
+  <option value="Uzbekistan" data-CountryCodeReal="998">Uzbekistan</option>
+  <option value="Vanuatu" data-CountryCodeReal="678">Vanuatu</option>
+  <option value="Vatican City" data-CountryCodeReal="379">Vatican City</option>
+  <option value="Venezuela" data-CountryCodeReal="58">Venezuela</option>
+  <option value="Vietnam" data-CountryCodeReal="84">Vietnam</option>
+  <option value="Virgin Islands - British" data-CountryCodeReal="1">Virgin Islands - British</option>
+  <option value="Virgin Islands - US" data-CountryCodeReal="1">Virgin Islands - US</option>
+  <option value="Wallis & Futuna" data-CountryCodeReal="681">Wallis &amp; Futuna</option>
+  <option value="Yemen (North)" data-CountryCodeReal="969">Yemen (North)</option>
+  <option value="Yemen (South)" data-CountryCodeReal="967">Yemen (South)</option>
+  <option value="Zambia" data-CountryCodeReal="260">Zambia</option>
+  <option value="Zimbabwe" data-CountryCodeReal="263">Zimbabwe</option> 
+
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Choose Target Country</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <br>
+      <br>
+      <br>
+
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button onclick="setFinalPriceAdvert();" class="button button-outline">View Summary</button>
+    </div>
+    </div>
+
+    <div id="advert_stage_2_form_main" style="display: none;" class="list">
+      <span>
+      <ul>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Item Name</div>
+                <span>FishPott Advertisement</span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Advert Duration</div>
+                <span id="advert_ad_days_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Price Per Day</div>
+                <span id="advert_price_per_ad_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Target Country</div>
+                <span id="advert_target_country_per_ad_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Target Minimum Age</div>
+                <span id="advert_target_min_age_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+           <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Target Maximum Age</div>
+                <span id="advert_target_max_age_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>   
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge</div>
+                <span id="advert_total_charge_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge - Cedis</div>
+                <span id="advert_total_charge_cedis_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <br>
+      <br>
+      <br>
+
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button onclick="prepareSlydePay('advert')" class="button button-outline">Proceed to Payment</button>
+      <br><br>
+      <button onclick="fixSaleForm('advert', '1', '');" class="button button-fill color-red">Reset Details</button>
+    </div>
+
+    </div>
+
+    <div id="advert_stage_3_form_main" style="display: none;" class="list">
+    <div class="block block-strong">
+      <p style="font-size: 12px;">FIRST STEP.<br><br><span style="color: green;">Click the "Make Payment On SlydePay" button. It wil take you to a web page where you can make payment</span></p>
+    </div>
+    <div class="block block-strong">
+      <p style="font-size: 12px;">SECOND STEP<br><br><span style="color: green;">Return to the FishPott app to click the "Record My Payment" button once you finish payment on SlydePay</span><br><br><span style="color: red;">If for some reason you are not met with this payment screen, please start and stay on the app for a couple of seconds without any activity for it to bring up the screen automatically for you to record your payment</span></p>
+    </div>
+
+      <a class="button button-fill color-blue external" style="margin-right: 10%; margin-left: 10%;" target="_blank" id="advert_slydepay_goto_btn_main" href="https://www.fishpott.com">
+        <button class="col button button-fill color-blue">Make Payment On SlydePay</button>
+      </a>
+
+      <br><br>
+      <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button class="button button-outline" onclick="savePaymentInfo('advert');">Record My Payment</button>
+    </div>
+      <br><br>
+    </div>
+
+    </div>
+    </div>
+    </div>
+<!-- ADVERT BUY POP UP END -->
+
+<!-- UP4SALE POP UP START -->
+      <div class="popup yardsale_transaction">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title">Yard Sale</div>
+            <div class="right">
+              <a id="transaction_yardsale_close_main" href="#" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+
+     <div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;">
+      <div class="card-header">
+        <!-- href="/messages/" -->
+       <a href="/messages/" id="chat_transaction_yardsale_main"  data-receiverpic="" onclick="startChat(this)" data-tablename = ""  data-receiverpottname = "" class="link popup-close" style="float: right;">
+        <i class="icon f7-icons ios-only" style="font-size: 20px;">chats</i>
+      </a>
+       <div class="demo-facebook-avatar" id="pott_trader_pic_yardsale_main" style="background-image: url(img/avatar.png); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 5px;"></div>
+        <div class="demo-facebook-name" id="pott_trader_name_yardsale_main">...</div>
+        <div class="demo-facebook-date" id="pott_trader_pottname_yardsale_main">...</div>
+        <div class="demo-facebook-date" id="quantity_info_yardsale_main" style="color: green;">...</div>
+      </div>
+    </div>
+
+        <div class="block block-strong">
+          <p style="font-size: 12px;" id="yardsale_verified_info">You are buying from a verified Pott trader, You are safeguarded. You either get the item felivered or your money back. <br><br><span style="color: green;">Please note that you will be charged in the equivalent cedis of the currency stated</span></p>
+        </div>
+    
+    <div id="transaction_yardsale_stage_1_main" class="list no-hairlines-md">
+      <ul>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Enter Quantity</div>
+            <div class="item-input-wrap">
+              <input id="transaction_yardsale_quantity_input_main" type="number" min="1" placeholder="Enter Quantity">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Enter Receiver's Full Name</div>
+            <div class="item-input-wrap">
+              <input id="transaction_yardsale_receiver_name_input_main" type="text" placeholder="Enter Receiver's Full Name">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Enter Receiver's Phone Number (With Country Code)</div>
+            <div class="item-input-wrap">
+              <input id="transaction_yardsale_receiver_phone_input_main" type="text" placeholder="Receiver's Phone Number (With Country Code)">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Delivery Address(Ferry Address)</div>
+            <div class="item-input-wrap">
+              <input id="transaction_yardsale_delivery_address_input_main" type="text" placeholder="Delivery Address">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+            <select id="transaction_yardsale_delivery_type_input_main" name="Choose Delivery Type">
+              <option value="Express Delivery" selected>Express Delivery</option>
+              <option value="Economy Delivery">Economy Delivery</option>
+              <option value="Tortoise Delivery">Tortoise Delivery</option>
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Choose Delivery Type</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div class="block block-strong">
+      <p style="font-size: 12px;">
+        <label class="checkbox">
+          <input id="transaction_yardsale_check_agreement_main" type="checkbox">
+          <i class="icon-checkbox"></i>
+        </label>
+        I agree that I have chatted with the seller and know the complete state of the item I am buying
+      </p>
+    </div>
+    <br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;"> 
+      <button onclick="setFinalPriceYardSale(this);" data-itemname = "" data-itemquantity = "" id="view_summary_btn_yardsale_btn" class="button button-outline">View Summary</button>
+    </div>
+    <br><br>
+    </div>
+
+    <div id="transaction_yardsale_stage_2_main" style="display: none; margin-top: -20px;" class="list">
+      <ul>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Item Name</div>
+                <span id="transaction_yardsale_info_itemname_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Price Per Item</div>
+                <span id="transaction_yardsale_info_itemprice_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Item Location</div>
+                <span id="transaction_yardsale_info_itemlocation_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Item Quantity</div>
+                <span id="transaction_yardsale_info_itemquantity_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+           <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Receiver's Name</div>
+                <span id="transaction_yardsale_info_receivername_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>   
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Receiver's Phone</div>
+                <span id="transaction_yardsale_info_receiverphone_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>   
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Delivery Location</div>
+                <span id="transaction_yardsale_info_deliverylocation_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>  
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Delivery Charge</div>
+                <span id="transaction_yardsale_info_deliverycharge_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>  
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge</div>
+                <span id="transaction_yardsale_info_totalcharge_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge In Cedis</div>
+                <span id="transaction_yardsale_info_totalcharge_cedis_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+        <button  onclick="prepareSlydePay('up4sale')" class="button button-outline">Proceed to Payment</button>
+      <br><br>
+      <button onclick="fixSaleForm('up4sale', '1', '');" class="button button-fill color-red">Reset Details</button>
+    </div>
+  <br><br>
+    </div>
+
+    <div id="transaction_yardsale_stage_3_main" style="display: none; margin-top: -20px;" class="list">
+    <div class="block block-strong">
+      <p style="font-size: 12px;">FIRST STEP.<br><br><span style="color: green;">Click the "Make Payment On SlydePay" button. It wil take you to a web page where you can make payment</span></p>
+    </div>
+    <div class="block block-strong">
+      <p style="font-size: 12px;">SECOND STEP<br><br><span style="color: green;">Return to the FishPott app to click the "Record My Payment" button once you finish payment on SlydePay</span><br><br><span style="color: red;">If for some reason you are not met with this payment screen, please start and stay on the app for a couple of seconds without any activity for it to bring up the screen automatically for you to record your payment</span></p>
+    </div>
+
+      <a class="button button-fill color-blue external" style="margin-right: 10%; margin-left: 10%;" target="_blank" id="yardsale_slydepay_goto_btn_main" href="https://www.fishpott.com">
+        <button class="col button button-fill color-blue">Make Payment On SlydePay</button>
+      </a>
+
+      <br><br>
+      <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button class="button button-outline" onclick="savePaymentInfo('up4sale');">Record My Payment</button>
+    </div>
+      <br><br>
+    </div>
+
+</div>
+    </div>
+    </div>
+<!-- UP4SALE POPUP END -->
+
+<!-- FUNDRAISER POP UP START -->
+      <div class="popup fundraiser_transaction">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title">Contributions</div>
+            <div class="right">
+              <a id="transaction_fundraiser_close_main" href="#" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+
+     <div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;">
+      <div class="card-header">
+        <!-- href="/messages/" -->
+       <a href="/messages/" id="chat_transaction_fundraiser_main" data-receiverpic="" onclick="startChat(this)"  data-receiverpottname = "" data-tablename = "" class="link popup-close" style="float: right;">
+        <i class="icon f7-icons ios-only" style="font-size: 20px;">chats</i>
+      </a>
+       <div class="demo-facebook-avatar" id="pott_trader_pic_fundraiser_main" style="background-image: url(img/avatar.png); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 5px;"></div>
+        <div class="demo-facebook-name" id="pott_trader_name_fundraiser_main">...</div>
+        <div class="demo-facebook-date" id="pott_trader_pottname_fundraiser_main">...</div>
+        <div class="demo-facebook-date" id="quantity_info_fundraiser_main" style="color: green;">...</div>
+      </div>
+    </div>
+
+        <div class="block block-strong">
+          <p style="font-size: 12px;">
+            <span id="fundraiser_verified_info">
+              ...
+            </span> <br><br><span style="color: green;">
+              Please note that you will be charged in the equivalent cedis of the currency stated
+            </span>
+          </p>
+        </div>
+    
+    <div id="transaction_fundraiser_stage_1_main" class="list no-hairlines-md">
+      <ul>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div id="transaction_fundraiser_amount_title" class="item-title item-label">How much do you want to contribute?</div>
+            <div class="item-input-wrap">
+              <input id="transaction_fundraiser_quantity_input_main" min="1" type="number" placeholder="Enter Amount">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="block block-strong">
+      <p style="font-size: 12px;">
+        <label class="checkbox">
+          <input id="transaction_fundraiser_check_agreement_main" type="checkbox">
+          <i class="icon-checkbox"></i>
+        </label>
+        I know the fundraiser is for a genuine course and that is why I am contributing
+      </p>
+    </div>
+    <br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;"> 
+      <button onclick="setFinalPriceFundraiser(this);" data-itemname = "" data-itemquantity = "" id="view_summary_btn_fundraiser_btn" class="button button-outline">View Summary</button>
+    </div>
+    <br><br>
+    </div>
+
+    <div id="transaction_fundraiser_stage_2_main" style="display: none; margin-top: -20px;" class="list">
+      <ul>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Fundraiser Name</div>
+                <span id="transaction_fundraiser_info_itemname_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge</div>
+                <span id="transaction_fundraiser_info_totalcharge_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge In Cedis</div>
+                <span id="transaction_fundraiser_info_totalcharge_cedis_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+        <button  onclick="prepareSlydePay('fundraiser')" class="button button-outline">Proceed to Payment</button>
+      <br><br>
+      <button onclick="fixSaleForm('fundraiser', '1', '');" class="button button-fill color-red">Reset Details</button>
+    </div>
+  <br><br>
+    </div>
+
+    <div id="transaction_fundraiser_stage_3_main" style="display: none; margin-top: -20px;" class="list">
+    <div class="block block-strong">
+      <p style="font-size: 12px;">FIRST STEP.<br><br><span style="color: green;">Click the "Make Payment On SlydePay" button. It wil take you to a web page where you can make payment</span></p>
+    </div>
+    <div class="block block-strong">
+      <p style="font-size: 12px;">SECOND STEP<br><br><span style="color: green;">Return to the FishPott app to click the "Record My Payment" button once you finish payment on SlydePay</span><br><br><span style="color: red;">If for some reason you are not met with this payment screen, please start and stay on the app for a couple of seconds without any activity for it to bring up the screen automatically for you to record your payment</span></p>
+    </div>
+
+      <a class="button button-fill color-blue external" style="margin-right: 10%; margin-left: 10%;" target="_blank" id="fundraiser_slydepay_goto_btn_main" href="https://www.fishpott.com">
+        <button class="col button button-fill color-blue">Make Payment On SlydePay</button>
+      </a>
+
+      <br><br>
+      <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button class="button button-outline" onclick="savePaymentInfo('fundraiser');">Record My Payment</button>
+    </div>
+      <br><br>
+    </div>
+
+</div>
+    </div>
+    </div>
+
+<!-- FUNDRAISER POPUP END -->
+
+
+<!-- SHARES4SALE POP UP START -->
+
+      <div class="popup sharesale_transaction">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title">Shares Sale</div>
+            <div class="right">
+              <a id="transaction_sharesale_close_main" href="#" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+
+     <div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;">
+      <div class="card-header">
+        <!-- href="/messages/" -->
+       <a href="/messages/" id="chat_transaction_sharesale_main" data-receiverpic="" onclick="startChat(this)"  data-receiverpottname = "" data-tablename = "" class="link popup-close" style="float: right;">
+        <i class="icon f7-icons ios-only" style="font-size: 20px;">chats</i>
+      </a>
+       <div class="demo-facebook-avatar" id="pott_trader_pic_sharesale_main" style="background-image: url(img/avatar.png); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 5px;"></div>
+        <div class="demo-facebook-name" id="pott_trader_name_sharesale_main">...</div>
+        <div class="demo-facebook-date" id="pott_trader_pottname_sharesale_main">...</div>
+        <div class="demo-facebook-date" id="quantity_info_sharesale_main" style="color: green;">...</div>
+      </div>
+    </div>
+
+        <div class="block block-strong">
+          <p style="font-size: 12px;">
+            <span style="color: green;">
+              Please note that you will be charged in the equivalent cedis of the currency stated
+            </span>
+          </p>
+        </div>
+    
+    <div id="transaction_sharesale_stage_1_main" class="list no-hairlines-md">
+      <ul>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">How many shares do you want to buy?</div>
+            <div class="item-input-wrap">
+              <input id="transaction_sharesale_quantity_input_main" min="1" type="number" placeholder="Enter Quantity">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="block block-strong">
+      <p style="font-size: 12px;">
+        <label class="checkbox">
+          <input id="transaction_sharesale_check_agreement_main" type="checkbox">
+          <i class="icon-checkbox"></i>
+        </label>
+        I am 18 years old or above
+      </p>
+    </div>
+    <br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;"> 
+      <button onclick="setFinalPriceSharesale(this);" data-itemname = "" data-itemquantity = "" id="view_summary_btn_sharesale_btn" class="button button-outline">View Summary</button>
+    </div>
+    <br><br>
+    </div>
+
+    <div id="transaction_sharesale_stage_2_main" style="display: none; margin-top: -20px;" class="list">
+      <ul>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Share Name</div>
+                <span id="transaction_sharesale_info_itemname_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Price Per Share</div>
+                <span id="transaction_sharesale_info_itemprice_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Quantity</div>
+                <span id="transaction_sharesale_info_itemquantity_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge</div>
+                <span id="transaction_sharesale_info_totalcharge_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge In Cedis</div>
+                <span id="transaction_sharesale_info_totalcharge_cedis_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    <br>
+        <div class="block block-strong">
+          <p style="font-size: 12px;">
+            <span style="color: green;" id="sharesale_yield_info">
+              ...
+            </span>
+          </p>
+        </div>
+    <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+        <button  onclick="prepareSlydePay('shares4sale')" class="button button-outline">Proceed to Payment</button>
+      <br><br>
+      <button onclick="fixSaleForm('shares4sale', '1', '');" class="button button-fill color-red">Reset Details</button>
+    </div>
+  <br><br>
+    </div>
+
+    <div id="transaction_sharesale_stage_3_main" style="display: none; margin-top: -20px;" class="list">
+    <div class="block block-strong">
+      <p style="font-size: 12px;">FIRST STEP.<br><br><span style="color: green;">Click the "Make Payment On SlydePay" button. It wil take you to a web page where you can make payment</span></p>
+    </div>
+    <div class="block block-strong">
+      <p style="font-size: 12px;">SECOND STEP<br><br><span style="color: green;">Return to the FishPott app to click the "Record My Payment" button once you finish payment on SlydePay</span><br><br><span style="color: red;">If for some reason you are not met with this payment screen, please start and stay on the app for a couple of seconds without any activity for it to bring up the screen automatically for you to record your payment</span></p>
+    </div>
+
+      <a class="button button-fill color-blue external" style="margin-right: 10%; margin-left: 10%;" target="_blank" id="sharesale_slydepay_goto_btn_main" href="https://www.fishpott.com">
+        <button class="col button button-fill color-blue">Make Payment On SlydePay</button>
+      </a>
+
+      <br><br>
+      <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button class="button button-outline" onclick="savePaymentInfo('shares4sale');">Record My Payment</button>
+    </div>
+      <br><br>
+    </div>
+
+</div>
+    </div>
+    </div>
+
+
+<!-- SHARES4SALE POPUP END -->
+
+
+<!-- EVENT POP UP START -->
+      <div class="popup event_transaction">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title">Ticket Sale</div>
+            <div class="right">
+              <a id="transaction_event_close_main" href="#" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+
+     <div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;">
+      <div class="card-header">
+        <!-- href="/messages/" -->
+       <a href="/messages/" id="chat_transaction_event_main" data-receiverpic="" onclick="startChat(this)" data-receiverpottname = "" data-tablename = "" style="float: right;">
+        <i class="icon f7-icons ios-only" style="font-size: 20px;">chats</i>
+      </a>
+       <div class="demo-facebook-avatar" id="pott_trader_pic_event_main" style="background-image: url(img/avatar.png); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%; margin-right: 5px;"></div>
+        <div class="demo-facebook-name" id="pott_trader_name_event_main">...</div>
+        <div class="demo-facebook-date" id="pott_trader_pottname_event_main">...</div>
+        <div class="demo-facebook-date" id="quantity_info_event_main" style="color: green;">...</div>
+      </div>
+    </div>
+
+        <div class="block block-strong">
+          <p style="font-size: 12px;">
+            <span id="event_verified_info">
+              ...
+            </span> <br><br><span style="color: green;">
+              Please note that you will be charged in the equivalent cedis of the currency stated
+            </span>
+          </p>
+        </div>
+    
+    <div id="transaction_event_stage_1_main" class="list no-hairlines-md">
+      <ul>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">How many tickets do you want to buy?</div>
+            <div class="item-input-wrap">
+              <input id="transaction_event_quantity_input_main" min="1" type="number" placeholder="Enter Quantity">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="block block-strong">
+      <p style="font-size: 12px;">
+        <label class="checkbox">
+          <input id="transaction_event_check_agreement_main" type="checkbox">
+          <i class="icon-checkbox"></i>
+        </label>
+        I know the event is genuine and that is why I am buying the ticket
+      </p>
+    </div>
+    <br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;"> 
+      <button onclick="setFinalPriceEvent(this);" data-itemname = "" data-itemquantity = "" id="view_summary_btn_event_btn" class="button button-outline">View Summary</button>
+    </div>
+    <br><br>
+    </div>
+
+    <div id="transaction_event_stage_2_main" style="display: none; margin-top: -20px;" class="list">
+      <ul>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Event Name</div>
+                <span id="transaction_event_info_itemname_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Price Per Ticket</div>
+                <span id="transaction_event_info_itemprice_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Ticket Quantity</div>
+                <span id="transaction_event_info_itemquantity_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge</div>
+                <span id="transaction_event_info_totalcharge_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge In Cedis</div>
+                <span id="transaction_event_info_totalcharge_cedis_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+        <button  onclick="prepareSlydePay('event')" class="button button-outline">Proceed to Payment</button>
+      <br><br>
+      <button onclick="fixSaleForm('event', '1', '');" class="button button-fill color-red">Reset Details</button>
+    </div>
+  <br><br>
+    </div>
+
+    <div id="transaction_event_stage_3_main" style="display: none; margin-top: -20px;" class="list">
+    <div class="block block-strong">
+      <p style="font-size: 12px;">FIRST STEP.<br><br><span style="color: green;">Click the "Make Payment On SlydePay" button. It wil take you to a web page where you can make payment</span></p>
+    </div>
+    <div class="block block-strong">
+      <p style="font-size: 12px;">SECOND STEP<br><br><span style="color: green;">Return to the FishPott app to click the "Record My Payment" button once you finish payment on SlydePay</span><br><br><span style="color: red;">If for some reason you are not met with this payment screen, please start and stay on the app for a couple of seconds without any activity for it to bring up the screen automatically for you to record your payment</span></p>
+    </div>
+
+      <a class="button button-fill color-blue external" style="margin-right: 10%; margin-left: 10%;" target="_blank" id="event_slydepay_goto_btn_main" href="https://www.fishpott.com">
+        <button class="col button button-fill color-blue">Make Payment On SlydePay</button>
+      </a>
+
+      <br><br>
+      <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button class="button button-outline" onclick="savePaymentInfo('event');">Record My Payment</button>
+    </div>
+      <br><br>
+    </div>
+
+</div>
+    </div>
+    </div>
+<!-- EVENT POPUP END -->
+
+
+<!-- other peoples pott page-->
+
+  <div class="popup pott">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title" id="pott_title_main" style=" width: 100%; text-align: center;">...</div>
+            <div class="right">
+              <a id="other_pott_close_main" onclick="resetOtherPottPage();" href="#" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="fab fab-right-bottom popup-close">
+    <a id="message_pott_main"   data-receiverpic="" onclick="startChat(this)" data-tablename = ""  data-receiverpottname = ""  href="/messages/">
+      <i class="icon f7-icons ios-only">chats</i>
+      <i class="icon material-icons md-only">add</i>
+    </a>
+  </div>
+                <div class="page-content">
+           <div style="height: 350px; background-color: #fff; text-align: box-shadow: 0 1px 2px rgba(0,0,0,.3); -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.3); border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;">
+          <div style="width: 100%; height: 120px; background-color: #000;">
+          </div>
+           <div style="margin-top: -50px;">
+            <div id="pott_profilepic_other_main" style="border: solid; border-color: #fff; background-image: url(img/avatar.png); background-size: cover; position: relative; width: 100px; padding-top: 100px; border-radius: 50%; text-align: center;  margin: 0 auto;">
+       </div>
+     </div>
+     <p style="text-align: center; font-style: bold; font-weight: 800; font-size: 18px; margin: 0.5em 0;" id="pott_fullname_other_main">...</p>
+     <p style="text-align: center; margin: 0.5em 0;" id="pott_pottname_other_main">...</p>
+     <p style="text-align: center; margin: 0.5em 0;" id="pott_investorlevel_other_main">...</p>
+     <p style="text-align: center; margin: 0.5em 0;" id="pott_country_other_main">...</p>
+<div class="row">
+        <div class="col-15"></div>
+        <div class="col-35"> 
+          <button onclick="startPottLinkChanger();" id="linkup_btn_main" data-status = "" class="button button-big button-fill">Linker</button>
+        </div>
+        <div class="col-35"> 
+          <button onclick="poachPearls();" id="poach_btn_main" class="button button-big button-outline">Poach Pearls</button>
+        </div>
+        <div class="col-15"></div>
+      </div>
+  </div>
+  <div class="card" style="margin-right: 0; margin-left: 0;">
+     <div class="row" style="text-align: center;">
+        <div class="col popup-open" data-popup=".links" onclick="getLinks('linkups', '', '')">
+          <p style=" padding-left: 10px;">
+            <span style="font-size: 16px; font-style: bold; font-weight: 800;" id="pott_linkupsnum_other_main">...</span><br>Linkups
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            <span style="font-size: 16px; font-style: bold; font-weight: 800;" id="pott_pearls_other_main">...</span> <br>Pott Pearls
+          </p>
+        </div>
+        <div class="col popup-open" data-popup=".links" onclick="getLinks('linked', '', '')"><p><span style="font-size: 16px; font-style: bold; font-weight: 800;" id="pott_linkednum_other_main">...</span> <br>Linked</p></div>
+      </div>
+  </div>
+   <div class="card" style="margin-right: 0; margin-left: 0;">
+     <div class="row" style="text-align: center;">
+        <div onclick="getSearchOrPottDataForOption('pott', 'up4sale_option', '', 'pott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_yardsale_icon_otherpott" class="icon f7-icons ios-only">tags_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('pott', 'sharessale_option', '', 'pott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_sharesale_icon_otherpott" class="icon f7-icons ios-only">briefcase_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('pott', 'event_option', '', 'pott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_event_icon_otherpott" class="icon f7-icons ios-only">calendar_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('pott', 'fundraiser_option', '', 'pott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_fundraiser_icon_otherpott" class="icon f7-icons ios-only">persons_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('pott', 'videos_option', '', 'pott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_videos_icon_otherpott" class="icon f7-icons ios-only">film_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('pott', 'news_option', '', 'pott_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_posts_icon_otherpott" class="icon f7-icons ios-only">world_fill</i>
+          </p>
+        </div>
+      </div>
+  </div>
+                  
+    <!-- pott page feed-->
+<div>
+  <span id="pott_results_holder">
+    
+  </span>
+    <br>
+  <span onclick="getSearchOrPottDataForOption('pott', '', '', 'pott_results_holder', '');" style="margin-left: 50%">
+          <button class="button button-big button-fill">
+      <i class="icon f7-icons ios-only">arrow_down_fill</i>
+      <i class="icon material-icons md-only">arrow_down_fill</i>
+          </button>
+  </span><br><br>
+    <!-- end normal picture card-->
+</div><!-- end shared post with comment card-->
+</div>
+    </div>
+    </div>
+
+
+<!-- view likes and dislikes-->
+
+
+ <div class="popup popup-likes">
+      <div class="page">
+        <div class="page-content">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title"></div>
+            <div class="right">
+              <a id="close_likes_main" href="#" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+    <span id="likes_holder_main">
+    
+    
+
+  </span>
+</div>
+    </div>
+    </div>
+
+         
+<!-- single post-->
+
+  <div class="popup post">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Post</div>
+            <div class="right"><a href="#" class="link popup-close"><i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only" style="display: inline;">close</i></a></div>
+          </div>
+        </div>
+                <div class="page-content">
+       <div class="card demo-facebook-card" style="margin-right: 0; margin-left: 0;">
+      <div class="card-header">
+       <a href="#" class="link popover-open" data-popover=".popover-menu" style="float: right;"><i class="icon f7-icons ios-only" style="font-size: 20px;">more_vertical</i></a>
+        <div class="demo-facebook-avatar" style="background-image: url(img/wide.jpg); background-size: cover; position: relative; width: 60px; padding-top: 60px; border-radius: 50%;"></div>
+         <div class="demo-facebook-name">John Doe</div>
+        <div class="demo-facebook-date">@johndoe</div>
+        <div class="demo-facebook-date">Monday at 3:47 PM</div>
+      </div>
+      <div class="card-content">
+      <p style="margin-left: 10px; font-size: 12px;">
+        The goal of this project is to help solve what a recent issue of Scientific American called “The
+Puzzle of Hypertension in African-Americans” (Cooper, et al. 1999). One key piece of this puzzle is
+the relationship between darker skin color and higher blood pressure within populations of African
+descent. This relationship has been interpreted as evidence of either a genetic or a sociocultural
+mechanism, but existing research does not provide a sufficient means of evaluating these alternatives.
+The proposed research aims to fill this gap in knowledge by isolating the sociocultural factors that
+mediate the relationship between skin color and blood pressure.
+The major hypothesis to be tested is that the ascription of low social status on the basis of skin
+color affects variation in blood pressure independently of actual skin tone and other known risk
+factors. This hypothesis depends on the distinction between skin color as a phenotype and skin color
+as a criterion of social status—a distinction that has not been operationalized in previous research.
+This study introduces a novel approach that aims to isolate the effects of these distinct variables on
+blood pressure variation. This strategy focuses on the following three objectives:</p>
+     <!--<a href="#" @click="openStandalone"><div style="background-image: url(img/lon.jpg); background-size: cover; position: relative; width: 100%; padding-top: 100%;">
+     <!-- <img src="img/wide.jpg" width="100%"/></div>
+   </a>-->
+ </div>
+      <p class="likes" style="font-size: 10px; line-height: 0.8;"><span class="popup-open" data-popup=".popup-likes">Likes: 112 &nbsp;</span> dislikes: 43 &nbsp; Comments: 43 &nbsp; views: 43</p>
+      <div class="card-footer">
+        <a href="#" class="link"><i class="icon f7-icons ios-only" style="font-size: 20px;">heart</i></a>
+        <a href="#" class="link"><i class="icon f7-icons ios-only" style="font-size: 20px;">heart</i></a>
+        <a href="#" class="link popup-open" data-popup=".comments"><i class="icon f7-icons ios-only" style="font-size: 20px;">chat</i></a>
+        <a href="#" class="link popover-open" data-popover=".popover-repost"><i class="icon f7-icons ios-only" style="font-size: 20px;">reply</i></a>
+        <a href="#" class="link"><i class="icon f7-icons ios-only" style="font-size: 20px;">bag</i></a></div>
+    </div>
+</div>
+    </div>
+    </div>
+
+
+    <!--cart page-->
+      <div class="popup cart">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title" id="cart_title">Globe Cart</div>
+            <div class="right">
+              <a href="#" id="cart_box_close_main" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+    <div class="page-content">
+    <span id="transaction_cart_stage_1_main">
+    <span id="cart_results_holder">
+
+        
+
+    </span>
+    <div class="list no-hairlines-md">
+      <ul>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Receiver Name</div>
+            <div class="item-input-wrap">
+              <input id="cart_receiver_name" type="text" placeholder="Receiver Name">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Receiver Phone</div>
+            <div class="item-input-wrap">
+              <input id="cart_receiver_phone" type="text" placeholder="Receiver Phone">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Delivery Address</div>
+            <div class="item-input-wrap">
+              <input id="cart_delivery_address" type="text" placeholder="Delivery Address">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+            <select id="cart_delivery_type" name="Choose Delivery Type">
+              <option value="Express Delivery" selected>Express Delivery</option>
+              <option value="Economy Delivery">Economy Delivery</option>
+              <option value="Tortoise Delivery">Tortoise Delivery</option>
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Choose Delivery Type</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+      <div class="block block-strong">
+      <p style="font-size: 12px;">
+        <label class="checkbox">
+          <input id="cart_check_agreement_main" type="checkbox">
+          <i class="icon-checkbox"></i>
+        </label>
+        I agree that I have chatted with the sellers and know the complete state of the items I am buying
+      </p>
+    </div>
+    <span style="margin-left: 50%">
+          <button id="checkout_btn_cart" onclick="setFinalPriceCart(this)" data-allitemsnum = "" class="button button-big button-fill">
+            Proceed To CheckOut
+          </button>
+     </span><br><br>
+   </span>
+
+    <div id="transaction_cart_stage_2_main" style="display: none; margin-top: -20px;" class="list">
+      <ul>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Item Name</div>
+                <span id="transaction_cart_info_itemname_main">Multiple Items From Globe Cart</span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li style="display: none;">
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Price For Items</div>
+                <span id="transaction_cart_info_itemprice_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Items Quantity</div>
+                <span id="transaction_cart_info_itemquantity_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+           <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Receiver's Name</div>
+                <span id="transaction_cart_info_receivername_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>   
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Receiver's Phone</div>
+                <span id="transaction_cart_info_receiverphone_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>   
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Delivery Location</div>
+                <span id="transaction_cart_info_deliverylocation_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>  
+        <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Delivery Charge</div>
+                <span id="transaction_cart_info_deliverycharge_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>  
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge</div>
+                <span id="transaction_cart_info_totalcharge_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li>
+          <a href="#" class="item-content">
+            <div class="item-inner">
+              <div class="item-title">
+                <div class="item-header">Total Charge In Cedis</div>
+                <span id="transaction_cart_info_totalcharge_cedis_main"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+        <button  onclick="prepareSlydePay('cart')" class="button button-outline">Proceed to Payment</button>
+      <br><br>
+      <button onclick="fixSaleForm('cart', '1', '');" class="button button-fill color-red">Reset Details</button>
+    </div>
+  <br><br>
+    </div>
+
+    <div id="transaction_cart_stage_3_main" style="display: none; margin-top: -20px;" class="list">
+    <div class="block block-strong">
+      <p style="font-size: 12px;">FIRST STEP.<br><br><span style="color: green;">Click the "Make Payment On SlydePay" button. It wil take you to a web page where you can make payment</span></p>
+    </div>
+    <div class="block block-strong">
+      <p style="font-size: 12px;">SECOND STEP<br><br><span style="color: green;">Return to the FishPott app to click the "Record My Payment" button once you finish payment on SlydePay</span><br><br><span style="color: red;">If for some reason you are not met with this payment screen, please start and stay on the app for a couple of seconds without any activity for it to bring up the screen automatically for you to record your payment</span></p>
+    </div>
+
+      <a class="button button-fill color-blue external" style="margin-right: 10%; margin-left: 10%;" target="_blank" id="cart_slydepay_goto_btn_main" href="https://www.fishpott.com">
+        <button class="col button button-fill color-blue">Make Payment On SlydePay</button>
+      </a>
+
+      <br><br>
+      <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button class="button button-outline" onclick="savePaymentInfo('cart');">Record My Payment</button>
+    </div>
+      <br><br>
+    </div>
+  </div>
+    </div>
+    </div>
+
+<span style="display: none;">
+  
+  <a href="#" id="continuepayment_btn" class="link popup-open" data-popup=".continuepayment"></a>
+
+</span>
+    <!--cart page-->
+      <div class="popup continuepayment">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title" id="cart_title">Unfinished Transaction</div>
+            <div class="right">
+              <a href="#" id="continuepayment_box_close_main" onclick="clearAllPurchases();" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+    <div class="page-content">
+
+    <div id="transaction_cart_stage_3_main" style="margin-top: -20px;" class="list">
+    <div class="block block-strong">
+      <p style="font-size: 12px;">FIRST STEP.<br><br><span style="color: green;">Click the "Make Payment On SlydePay" button. It wil take you to a web page where you can make payment</span></p>
+    </div>
+    <div class="block block-strong">
+      <p style="font-size: 12px;">SECOND STEP<br><br><span style="color: green;">Return to the FishPott app to click the "Record My Payment" button once you finish payment on SlydePay</span><br><br><span style="color: red;">If for some reason you are not met with this payment screen, please start and stay on the app for a couple of seconds without any activity for it to bring up the screen automatically for you to record your payment</span></p>
+    </div>
+
+      <a class="button button-fill color-blue external" style="margin-right: 10%; margin-left: 10%;" target="_blank" id="continuepayment_btn_slydepay_goto_btn_main" href="https://www.fishpott.com">
+        <button class="col button button-fill color-blue">Make Payment On SlydePay</button>
+      </a>
+
+      <br><br>
+      <br><br>
+    <div class="col" style="margin-right: 10%; margin-left: 10%;">
+      <button class="button button-outline" onclick="savePaymentInfo('all');">Record My Payment</button>
+    </div>
+      <br><br>
+    </div>
+  </div>
+    </div>
+    </div>
+
+
+    <!--links popup-->
+      <div class="popup links">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Links</div>
+            <div class="right">
+              <a href="#" onclick="document.getElementById('links_results_holder').innerHTML = '';" id="links_box_close_main" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+    <div class="page-content">
+      <span id="links_results_holder">
+
+        
+
+    </span>
+
+    <span onclick="getLinks('linkups', '???', 'continue');" style="margin-left: 50%">
+          <button class="button button-big button-fill">
+      <i class="icon f7-icons ios-only">arrow_down_fill</i>
+      <i class="icon material-icons md-only">arrow_down_fill</i>
+          </button>
+     </span><br><br>
+
+    </div>
+    </div>
+    </div>
+
+
+
+    <!--search page-->
+      <div class="popup search">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Search Results</div>
+            <div class="right">
+              <a href="#" onclick ="search_or_pottdata_last_sku = 0;" id="search_box_close_main" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+                <div class="page-content">
+           <div class="card" style="margin-right: 0; margin-left: 0;">
+     <div class="row" style="text-align: center;">
+        <div onclick="getSearchOrPottDataForOption('search', 'up4sale_option', '', 'search_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_yardsale_icon" class="icon f7-icons ios-only">tags_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('search', 'sharessale_option', '', 'search_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_sharesale_icon" class="icon f7-icons ios-only">briefcase_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('search', 'event_option', '', 'search_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_event_icon" class="icon f7-icons ios-only">calendar_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('search', 'fundraiser_option', '', 'search_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_fundraiser_icon" class="icon f7-icons ios-only">persons_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('search', 'videos_option', '', 'search_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_videos_icon" class="icon f7-icons ios-only">film_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('search', 'potts_option', '', 'search_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_pott_icon" class="icon f7-icons ios-only">person_fill</i>
+          </p>
+        </div>
+        <div onclick="getSearchOrPottDataForOption('search', 'news_option', '', 'search_results_holder', 'start');" class="col">
+          <p>
+            <i style="color: #ccccb3" id="ios_posts_icon" class="icon f7-icons ios-only">world_fill</i>
+          </p>
+        </div>
+      </div>
+  </div>
+    <div class="block" style="margin: 0;">
+      <p style="display: none;">keyword : John Doe </p>
+    </div>
+    <span id="search_results_holder">
+
+    </span>
+    <br>
+    <span onclick="getSearchOrPottDataForOption('search', '', '', 'search_results_holder','');" style="margin-left: 50%">
+          <button class="button button-big button-fill">
+      <i class="icon f7-icons ios-only">arrow_down_fill</i>
+      <i class="icon material-icons md-only">arrow_down_fill</i>
+          </button>
+     </span><br><br>
+  </div>
+    </div>
+    </div>
+
+<!-- JUST NEWS POST START-->
+
+<div class="popup justnews">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Post News</div>
+            <div class="right">
+              <a id="close_justnewspost_main" href="#" class="link popup-close">
+                <i class="icon f7-icons ios-only">close</i>
+                <i class="icon material-icons md-only" style="display: inline;">close</i>
+              </a>
+            </div>
+          </div>
+        </div>
+                <div class="page-content">
+           <div class="list no-hairlines-md">
+      <ul>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label"></div>
+            <div class="item-input-wrap">
+              <textarea id="newstext_justnews_main" style="height: 100px; width: 100%;" class="resizable" placeholder="What's on your mind"></textarea>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="row" style="text-align: center;">
+
+        <div class="col">
+          <label for="upload_news_pic_justnews_main"><p><i class="icon f7-icons ios-only">images</i></p></label>
+            <input class="news-image" data-type="justnews" id="upload_news_pic_justnews_main" type="file" accept="image/x-png,image/gif,image/jpeg" style="display: none;">
+        </div>
+
+        <div class="col"><p><i class="icon f7-icons ios-only">camera</i></p></div>
+
+        <div class="col">
+          <label for="upload_news_video_justnews_main"><p><i class="icon f7-icons ios-only">film</i></p></label>
+
+            <input id="upload_news_video_justnews_main" onchange="showToast('Video Attached')" type="file" class="file_multi_video" accept="video/*"  style="display: none;">            
+
+        </div>
+
+        <div class="col"><p><i class="icon f7-icons ios-only">videocam</i></p></div>
+      </div>
+      <br>
+
+<!-- CROPS START -->
+<div class="col">
+
+  <!-- leftbox -->
+  <div class="crop_box-2">
+    <div id="just_news_crop_result"></div>
+  </div>
+
+</div>
+<!-- END -->
+
+      <br><br>
+</div>
+ <div class="fab fab-right-bottom">
+    <a  data-type="justnews" class="post-news-btn" href="#">
+      <i class="icon f7-icons ios-only">paper_plane</i>
+      <i class="icon material-icons md-only">add</i>
+    </a>
+  </div>
+</div>
+</div>
+
+
+<!-- JUST NEWS POST END -->
+
+<!-- UP-4-SALE NEWS POST START -->
+
+<div class="popup yardsalenews">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Up-4-Sale<!--change to particular activity --></div>
+            <div class="right"><a id="close_yardsalenewspost_main" href="#" class="link popup-close"><i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only" style="display: inline;">close</i></a></div>
+          </div>
+        </div>
+                <div class="page-content">
+           <div class="list no-hairlines-md">
+      <ul>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label"></div>
+            <div class="item-input-wrap">
+              <textarea id="newstext_yardsalenews_main" style="height: 100px; width: 100%;" class="resizable" placeholder="Tell the world about the item you are selling.."></textarea>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Item Name</div>
+            <div class="item-input-wrap">
+              <input id="itemname_yardsalenews_main" type="text" placeholder="Item name">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div id="pricetitle_yardsalenews_main" class="item-title item-label">Price For One</div>
+            <div class="item-input-wrap">
+              <input id="price_yardsalenews_main" min="1" type="number" placeholder="Price For One">
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Item Weight (Kilogram)</div>
+            <div class="item-input-wrap">
+              <input id="itemweight_yardsalenews_main" type="text" placeholder="Item Weight">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Quantity In Stock</div>
+            <div class="item-input-wrap">
+              <input id="quantity_yardsalenews_main" type="number" min="1" placeholder="Quantity In Stock">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Delivery <br>(Ferry Delivery Service will come for the item and deliver it to your buyers)</div>
+            <div class="item-input-wrap">
+              <input readonly="readonly" id="delivery_yardsalenews_main" type="text" value="Ferry">
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Item Pickup Ferry Address</div>
+            <div class="item-input-wrap">
+              <input id="itempickup_yardsalenews_main" type="text" placeholder="Pickup Ferry Address">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+     <!--preview of ploaded image-->
+   </div>
+
+      <div class="row" style="text-align: center;">
+
+        <div class="col">
+          <!-- CROPS START -->
+
+            <!-- leftbox -->
+            <div class="crop_box-2">
+              <div id="up4sale_news_crop_result"></div>
+            </div>
+
+          <!-- END -->
+          <label for="upload_news_pic_yardsale_main"><p><i class="icon f7-icons ios-only">images</i></p></label>
+            <input  class="news-image" data-type="up4salenews"  id="upload_news_pic_yardsale_main" type="file" accept="image/x-png,image/gif,image/jpeg" style="display: none;">
+        </div>
+      </div>
+    </div>
+
+
+      <br><br>
+</div>
+ <div class="fab fab-right-bottom">
+    <a   data-type="up4salenews" class="post-news-btn" href="#">
+      <i class="icon f7-icons ios-only">paper_plane</i>
+      <i class="icon material-icons md-only">add</i>
+    </a>
+  </div>
+</div>
+<!-- UP-4-SALE NEWS POST END -->
+
+<!-- SHARES-4-SALE NEWS POST START -->
+
+<div class="popup sharessalenews">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Shares-Sale<!--change to particular activity --></div>
+            <div class="right"><a id="close_sharessalenewspost_main" href="#" class="link popup-close"><i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only" style="display: inline;">close</i></a></div>
+          </div>
+        </div>
+                <div class="page-content">
+           <div class="list no-hairlines-md">
+      <ul>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+            <select onchange ="setSharesInfo(this, '');" onselect="setSharesInfo(this, '');" id="selected_shares_id" name="shares_id">
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Choose Shares To Sell</div>
+              </div>
+            </div>
+          </a>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div style="color: red;" id="maximumpricetitle_sharesalenews_main" class="item-title item-label">Maximum Allowed Price : Pending</div><br>
+            <div  style="color: red;" id="currentavailabletitle_sharesalenews_main" class="item-title item-label">Choose Shares</div> <br>
+            <div class="item-input-wrap">
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div id="pricetitle_sharesalenews_main" class="item-title item-label">Selling Price Per Share</div>
+            <div class="item-input-wrap">
+              <input id="price_sharesalenews_main" type="number" min="1" placeholder="Price Per Share">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Quantity On Sale</div>
+            <div class="item-input-wrap">
+              <input id="quantity_sharessalenews_main" min="1" type="number" placeholder="quantity being sold?">
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Password</div>
+            <div class="item-input-wrap">
+              <input id="password_sharenews_main" type="password" placeholder="Password">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label"></div>
+            <div class="item-input-wrap">
+              <textarea id="newstext_sharesalenews_main" style="height: 100px; width: 100%;" class="resizable" placeholder="Tell the world about the shares you are selling and why it's a good deal.."></textarea>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label"></div>
+            <div class="item-input-wrap">
+              <textarea id="info_sharesalenews_main" style="height: 100px; width: 100%;" class="resizable" readonly="readonly"></textarea>
+            </div>
+          </div>
+        </li>
+      </ul>
+     <!--preview of ploaded image--></div>
+    </div>
+      <br><br><br>
+</div>
+ <div class="fab fab-right-bottom">
+    <a onclick="postSharesSaleNews();" href="#">
+      <i class="icon f7-icons ios-only">paper_plane</i>
+      <i class="icon material-icons md-only">add</i>
+    </a>
+  </div>
+</div>
+<!-- SHARES-4-SALE NEWS POST END -->
+
+
+
+<!-- EVENT NEWS POST START -->
+
+<div class="popup eventnews">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">Event<!--change to particular activity --></div>
+            <div class="right"><a id="close_eventnewspost_main" href="#" class="link popup-close"><i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only" style="display: inline;">close</i></a></div>
+          </div>
+        </div>
+                <div class="page-content">
+           <div class="list no-hairlines-md">
+      <ul>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label"></div>
+            <div class="item-input-wrap">
+              <textarea  style="height: 100px; width: 100%;" id="newstext_eventnews_main" class="resizable" placeholder="Tell the world about your event..."></textarea>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Event Name</div>
+            <div class="item-input-wrap">
+              <input id="name_eventnews_main" type="text" placeholder="Event Name">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Venue</div>
+            <div class="item-input-wrap">
+              <input id="venue_eventnews_main" type="text" placeholder="Venue">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Date &time</div>
+            <div class="item-input-wrap">
+              <input id="time_eventnews_main" type="datetime-local" placeholder="Time">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+            <select id="selling_tickets_option_main" onchange="setEventFormType(this);" name="Do you wat to sell tickets">
+              <option value="yes" selected>Yes</option>
+              <option value="no">No its free</option>
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Do you want to sell tickets</div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <span id="selling_ticket_section_main">
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div id="pricetitle_eventnews_main" class="item-title item-label">Ticket Price</div>
+            <div class="item-input-wrap">
+              <span id="price_holder_eventnews_main"><input id="price_eventnews_main" type="number" min="1" placeholder="Ticket Price"></span>
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Available Tickets</div>
+            <div class="item-input-wrap">
+              <span><input id="quantity_eventnews_main" type="number" min="1" placeholder="Available Tickets"></span>
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        </span>
+      </ul>
+     <!--preview of ploaded image--></div>
+
+    <div class="row" style="text-align: center;">
+
+
+        <div class="col">
+        <!-- CROPS START -->
+
+          <!-- leftbox -->
+          <div class="crop_box-2">
+            <div id="event_news_crop_result"></div>
+          </div>
+
+        <!-- END -->
+          <label for="upload_news_pic_eventnews_main"><p><i class="icon f7-icons ios-only">images</i></p></label>
+            <input class="news-image" data-type="eventnews" id="upload_news_pic_eventnews_main" type="file" accept="image/x-png,image/gif,image/jpeg" style="display: none;">
+        </div>
+      </div>
+      <br>
+
+<br><br>
+    </div>
+
+</div>
+ <div class="fab fab-right-bottom">
+    <a  data-type="eventnews" class="post-news-btn" href="#">
+      <i class="icon f7-icons ios-only">paper_plane</i>
+      <i class="icon material-icons md-only">add</i>
+    </a>
+  </div>
+</div>
+
+<!-- EVENT NEWS POST END -->
+
+<!-- FUNDRAISER NEWS POST START -->
+
+<div class="popup fundraisernews">
+      <div class="page">
+        <div class="navbar no-shadow">
+          <div class="navbar-inner">
+            <div class="title">FUNDRAISER<!--change to particular activity --></div>
+            <div class="right"><a id="close_fundraisernewspost_main" href="#" class="link popup-close"><i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only" style="display: inline;">close</i></a></div>
+          </div>
+        </div>
+                <div class="page-content">
+           <div class="list no-hairlines-md">
+      <ul>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label"></div>
+            <div class="item-input-wrap">
+              <textarea  style="height: 100px; width: 100%;" id="newstext_fundraisernews_main" class="resizable" placeholder="Tell the world about your event..."></textarea>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Fundraiser Name</div>
+            <div class="item-input-wrap">
+              <input id="name_fundraisernews_main" type="text" placeholder="Fundraiser Name">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div id="pricetitle_fundraisernews_main" class="item-title item-label">Target Amount</div>
+            <div class="item-input-wrap">
+              <input id="amount_fundraisernews_main" type="number" min="100" placeholder="Target Amount">
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+         <li class="item-content item-input">
+          <div class="item-inner">
+            <div class="item-title item-label">Closing Date</div>
+            <div class="item-input-wrap">
+              <input id="time_fundraisernews_main" type="date" placeholder="Closing Date">
+            </div>
+          </div>
+        </li>
+      </ul>
+     <!--preview of ploaded image--></div>
+
+    <div class="row" style="text-align: center;">
+
+
+        <div class="col">
+          <!-- CROPS START -->
+            
+            <!-- leftbox -->
+            <div class="crop_box-2">
+              <div id="fundraiser_news_crop_result"></div>
+            </div>
+
+          <!-- END -->
+          <label for="upload_news_pic_fundraisernews_main"><p><i class="icon f7-icons ios-only">images</i></p></label>
+            <input class="news-image" data-type="fundraisernews"  id="upload_news_pic_fundraisernews_main" type="file" accept="image/x-png,image/gif,image/jpeg" style="display: none;">
+        </div>
+      </div>
+      <br>
+
+
+      <br><br>
+    </div>
+
+</div>
+ <div class="fab fab-right-bottom">
+    <a  data-type="fundraisernews" class="post-news-btn" href="#">
+      <i class="icon f7-icons ios-only">paper_plane</i>
+      <i class="icon material-icons md-only">add</i>
+    </a>
+  </div>
+</div>
+<!-- FUNDRAISER NEWS POST END -->
+
+</div>
+
+    <!---nothing must go under this-->
+</div> 

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+<style type="text/css">
+.md .tabbar a.tab-link.tab-link-active{
+  color: #000;
+}
+</style>
+  <link rel="stylesheet" href="css/framework7.min.css">
+  <link rel="stylesheet" href="css/app.css">
+
+<!-- CROPS START -->
+
+  <link rel='stylesheet' href='css/cropper.min.css'>
+  <link rel="stylesheet" href="css/cropper_mystyle.css">
+
+<!-- END -->
+
+  <link rel="apple-touch-icon" href="img/f7-icon-square.png">
+  <link rel="icon" href="img/f7-icon.png">
+
+</head>
+<body class="color-theme-black" id="bodymain">
+    <input style="display: none;" id="start" type="text" >
+    <input type="text" style="display: none;" id="end">
+  <span style="display: none;" id="warnings-panel"></span>
+
+  <span style="display: none;">
+
+  <audio id="like_audio" controls >
+  <source src="img/like.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="dislike_audio" controls >
+  <source src="img/dislike.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="comment_audio" controls >
+  <source src="img/comment.mp3" type="audio/mpeg">
+  </audio>
+
+  </span>
+  <div id="app">
+<div class="statusbar"></div>
+<div class="view view-main view-init ios-edges" data-url="/">
+<div class="page">
+  <div class="page-content">
+    <div data-pagination='{"el": ".swiper-pagination", "hideOnClick": true}' class="swiper-container swiper-init demo-swiper">
+      <div class="swiper-pagination"></div>
+      <!-- splash1-->
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-color: #f37901;"> <center><div style="border: none ; width: 70%; margin-top: 10%;">
+           <img src="img/fishpot_splash.png" style="width: 100%;">
+           </div>
+           <p style="font-size: 14px; font-weight: 300; color: #fff;">
+           <i class="icon f7-icons ios-only" style="color: #fff;">arrow_left</i>
+          <i class="icon material-icons md-only" style="color: #fff;">arrow_back</i>
+          Swipe left to begin</p></center></div>
+             <!-- splash2-->
+
+        <div class="swiper-slide" style="background-color: #f0f2ff;"><center><div style="border: none ; border-color: #d9d9d9; width: 90%;">
+           <img src="img/fishpot_splash1.png" style="width: 100%;">
+           </div>
+           <p style="font-size: 16px; font-weight: 600; color: #000; text-align: center;"><span style="font-weight: 900;">Connectivity</span><br> Connect with the world. Build influence and pearls you can cash out</p>
+               <div class="block">
+            <p style="font-size: 14px; font-weight: 300; color: #000;">
+           <i class="icon f7-icons ios-only" style="color: #000;">arrow_left</i>
+          <i class="icon material-icons md-only" style="color: #000;">arrow_back</i>
+          Swipe left to Continue</p>
+      </div>
+      </center>
+              </div> 
+
+<!--splash3-->
+
+<div class="swiper-slide" style="background-color: #f0f2ff;"> <center><div style="border: none ; border-color: #d9d9d9; width: 70%;">
+           <img src="img/fishpot_splash2.png" style="width: 100%;">
+           </div>
+           <p style="font-size: 16px; font-weight: 600; color: #000; text-align: center;" class="block"><span style="color: #009933;">Yard Sale</span> <br>Buy and Sell locally and globally</p>
+               <div class="block">
+            <p style="font-size: 14px; font-weight: 300; color: #000;">
+           <i class="icon f7-icons ios-only" style="color: #000;">arrow_left</i>
+          <i class="icon material-icons md-only" style="color: #000;">arrow_back</i>
+          Swipe left to Continue</p>
+      </div> 
+      </center>
+      </div>     
+              
+
+
+               
+
+      <!-- splash4-->
+        <div class="swiper-slide" style="background-color: #f0f2ff;"> <center><div style="border: none ; border-color: #d9d9d9; width: 90%;">
+           <img src="img/fishpot_splash3.png" style="width: 100%;">
+           </div>
+           <p style="font-size: 16px; font-weight: 600; color: #000; text-align: center;" class="block"><span style="color: #ff9900;">Shares4sale</span> <br>Invest globally. Buy and Sell stocks that yield and pay periodically</p>
+               <div class="block">
+            <p style="font-size: 14px; font-weight: 300; color: #000;">
+           <i class="icon f7-icons ios-only" style="color: #000;">arrow_left</i>
+          <i class="icon material-icons md-only" style="color: #000;">arrow_back</i>
+          Swipe left to Continue</p>
+      </div>
+      </center>
+              </div> 
+                <!-- splash5-->
+        <div class="swiper-slide" style="background-color: #f0f2ff;"> <center><div style="border: none ; border-color: #d9d9d9; width: 90%;">
+           <img src="img/fishpot_splash4.png" style="width: 100%;">
+           </div>
+           <p style="font-size: 16px; font-weight: 600; color: #000; text-align: center;" class="block"><span style="color: #e6e600;">Events</span> <br>Put up your events and sell tickets to your events globally</p>
+                 <div class="block">
+            <p style="font-size: 14px; font-weight: 300; color: #000;">
+           <i class="icon f7-icons ios-only" style="color: #000;">arrow_left</i>
+          <i class="icon material-icons md-only" style="color: #000;">arrow_back</i>
+          Swipe left to Continue</p>
+      </div>
+      </center>
+
+
+              </div>   <!-- splash6-->
+        <div class="swiper-slide" style="background-color: #f0f2ff;"> <center><div style="border: none ; border-color: #d9d9d9; width: 90%;">
+           <img src="img/fishpot_splash6.png" style="width: 100%;">
+           </div>
+           <p style="font-size: 16px; font-weight: 600; color: #000; text-align: center;" class="block"><span style="color: #33adff;">Fundraiser</span> <br>Raise funds from around the world for your course</p>
+               <div class="block">
+           <div class="row">
+        <div class="col"> 
+        <a href="/login/"> 
+        <button class="col button" style="background-color: #000; color: #fff;">LOGIN</button></a>
+        </div>
+        <div class="col"> 
+        <a href="/signin/">       
+        <button class="col button button-outline" style="border-color: #000; color: #000;">SIGN UP</button></a>
+        </div>
+      </div>
+      </div>
+      </center>
+              </div> 
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/framework7.min.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="cordova.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDZzakxRXjNngNZwkMnLSv0xNoEuDc7_sQ",
+      authDomain: "fishpott-4c2f8.firebaseapp.com",
+      databaseURL: "https://fishpott-4c2f8.firebaseio.com",
+      projectId: "fishpott-4c2f8",
+      storageBucket: "fishpott-4c2f8.appspot.com",
+      messagingSenderId: "862654244567"
+    };
+    firebase.initializeApp(config);
+  </script>
+<!-- CROPS START -->
+  <script src='js/cropper.min.js'></script>
+<!-- END -->
+  <script src="js/app.js"></script>
+</body>
+</html>

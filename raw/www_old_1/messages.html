@@ -1,0 +1,214 @@
+<template>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a onclick="refreshMessages()" href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
+        </div>
+        <div style="width: 100%; margin-right: 20%; margin-left: 15%; text-align: center;" class="title" id="receiver_name_messages"></div>
+      </div>
+    </div>
+    <div class="toolbar messagebar">
+      <div class="toolbar-inner">
+        <label for="upload_message_pic_message" onmousedown="checkLongPressStart('message');" onmouseup="checkLongPressEnd();">
+          <a class="link icon-only">
+            <i class="icon f7-icons ios-only" id="send_pic_icon_ios">camera_fill</i>
+            <i class="icon material-icons md-only" id="send_pic_icon_android">camera_alt</i>
+          </a>
+        </label>
+          <input id="upload_message_pic_message" type="file" onchange="setImageAddedColor();" accept="image/x-png,image/gif,image/jpeg" style="display: ;">
+
+        <div class="messagebar-area">
+          <textarea id="message_input_messages" class="resizable" placeholder="Type Message"></textarea>
+        </div>
+        <div  onclick="async(sendMessage(this), null);" id="send_message_btn"  data-receiverpic="" data-receivername = "" data-chattable="" data-receiverpottname="" data-newsid="">
+        <a class="link icon-only demo-send-message-link">
+          <i class="icon f7-icons ios-only">arrow_up_fill</i>
+          <i class="icon material-icons md-only">send</i>
+        </a>
+      </div>
+
+      </div>
+    </div>
+    <div class="page-content messages-content">
+      <div id="messages_holder" class="messages" style="">
+       <!-- <div class="messages-title"><b>Sunday, Feb 9,</b> 12:58</div>-->
+        
+
+        
+
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    data: function () {
+      return {
+        images: [
+          'img/wide.jpg',
+          'img/wide.jpg',
+          'img/wide.jpg',
+          'img/wide.jpg',
+          'img/wide.jpg',
+          'img/wide.jpg',
+          'http://lorempixel.com/300/300/cats/7/',
+          'http://lorempixel.com/200/300/cats/8/',
+          'http://lorempixel.com/400/300/cats/9/',
+          'http://lorempixel.com/300/150/cats/10/'
+        ],
+        people: [
+          {
+            name: 'Kate Johnson',
+            avatar: 'img/wide.jpg'
+          },
+          {
+            name: 'Blue Ninja',
+            avatar: 'img/wide.jpg'
+          },
+        ],
+        answers: [
+          'Yes!',
+          'No',
+          'Hm...',
+          'I am not sure',
+          'And what about you?',
+          'May be ;)',
+          'Lorem ipsum dolor sit amet, consectetur',
+          'What?',
+          'Are you sure?',
+          'Of course',
+          'Need to think about it',
+          'Amazing!!!',
+        ],
+        responseInProgress: false,
+      }
+    },
+    methods: {
+      sheetToggle: function () {
+        var self = this;
+        self.messagebar.sheetToggle();
+      },
+      deleteAttachment: function (e, index) {
+        var self = this;
+        var image = self.messagebar.attachments.splice(index, 1)[0];
+        self.messagebar.renderAttachments();
+        self.checkAttachments();
+        // Uncheck in sheet
+        var imageIndex = self.images.indexOf(image);
+        self.$el.find('.messagebar-sheet .checkbox').eq(imageIndex).find('input').prop('checked', false);
+      },
+      handleAttachment: function (e) {
+        var self = this;
+        var $$ = self.$$;
+        var index = $(e.target).parents('label.checkbox').index();
+        var image = self.images[index];
+        if (e.target.checked) {
+          // Add to attachments
+          self.messagebar.attachments.unshift(image)
+        } else {
+          // Remove from attachments
+          self.messagebar.attachments.splice(self.messagebar.attachments.indexOf(image), 1);
+        }
+        self.messagebar.renderAttachments();
+        self.checkAttachments();
+      },
+      checkAttachments: function () {
+        var self = this;
+        if (self.messagebar.attachments.length > 0) {
+          self.messagebar.attachmentsShow();
+          self.messagebar.setPlaceholder('Add comment or Send');
+        } else {
+          self.messagebar.attachmentsHide();
+          self.messagebar.setPlaceholder('Message');
+        }
+      },
+      sendMessage: function () {
+        var self = this;
+        var text = self.messagebar.getValue().replace(/\n/g, '<br>').trim();
+        var messagesToSend = [];
+        self.messagebar.attachments.forEach(function (attachment) {
+          var size = attachment.split('lorempixel.com/')[1].split('/');
+          messagesToSend.push({
+            image: '<img src="' + attachment + '" style="width: ' + (size[0]/2) + 'px; height: ' + (size[1]/2) + 'px">'
+          });
+        });
+        if (text.trim().length) {
+          messagesToSend.push({
+            text: text
+          });
+        }
+        // Reset attachments
+        self.messagebar.attachments = [];
+        self.checkAttachments();
+        // Hide sheet
+        self.messagebar.sheetHide();
+        // Uncheck selected images in sheet
+        self.messagebar.$sheetEl.find('input').prop('checked', false);
+        // Clear area
+        self.messagebar.clear();
+        // Focus area
+        if (text.length) self.messagebar.focus();
+        // Send message
+        self.messages.addMessages(messagesToSend);
+
+        // Mock response
+        if (self.responseInProgress) return;
+        self.responseInProgress = true;
+        setTimeout(function () {
+          var answer = self.answers[Math.floor(Math.random() * self.answers.length)];
+          var person = self.people[Math.floor(Math.random() * self.people.length)];
+          self.messages.showTyping({
+            header: person.name + ' is typing',
+            avatar: person.avatar
+          });
+          setTimeout(function () {
+            self.messages.addMessage({
+              text: answer,
+              type: 'received',
+              name: person.name,
+              avatar: person.avatar
+            });
+            self.messages.hideTyping();
+            self.responseInProgress = false;
+          }, 4000);
+        }, 1000);
+      },
+    },
+    on: {
+      pageBeforeRemove: function (e, page) {
+        var self = this;
+        if (self.messagebar) self.messagebar.destroy();
+      },
+      pageInit: function (e, page) {
+        var self = this;
+        var app = self.$app;
+        self.messagebar = app.messagebar.create({
+          el: page.$el.find('.messagebar'),
+          attachments: []
+        });
+        self.messages = app.messages.create({
+          el: page.$el.find('.messages'),
+          firstMessageRule: function (message, previousMessage, nextMessage) {
+            if (message.isTitle) return false;
+            if (!previousMessage || previousMessage.type !== message.type || previousMessage.name !== message.name) return true;
+            return false;
+          },
+          lastMessageRule: function (message, previousMessage, nextMessage) {
+            if (message.isTitle) return false;
+            if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) return true;
+            return false;
+          },
+          tailMessageRule: function (message, previousMessage, nextMessage) {
+            if (message.isTitle) return false;
+            if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) return true;
+            return false;
+          }
+        });
+      }
+    }
+  }
+</script>

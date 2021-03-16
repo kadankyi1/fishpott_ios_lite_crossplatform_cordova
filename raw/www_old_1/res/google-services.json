@@ -1,0 +1,115 @@
+{
+  "project_info": {
+    "project_number": "297601361917",
+    "firebase_url": "https://ferry-a1d1a.firebaseio.com",
+    "project_id": "ferry-a1d1a",
+    "storage_bucket": "ferry-a1d1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297601361917:android:40bf7099c6f7bd5e",
+        "android_client_info": {
+          "package_name": "com.ferryglobal.ferry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297601361917-6blle7c6dbv8ehh6u3egj40jnallrkcf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ferryglobal.ferry",
+            "certificate_hash": "27c34e2bb5d6ad7a4c4847df80b09add7496080c"
+          }
+        },
+        {
+          "client_id": "297601361917-omnip56gu3jftltosqt898d49df062qi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ferryglobal.ferry",
+            "certificate_hash": "e046ed9477249e296b4749a3f6058eacaa254a82"
+          }
+        },
+        {
+          "client_id": "297601361917-0vu393r02mgamknj6p9q2imb9ev4ekc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ferryglobal.ferry",
+            "certificate_hash": "c54029b7147aeeceeae0743ec7dfb11b441ed09b"
+          }
+        },
+        {
+          "client_id": "297601361917-h487eebl8r0im2ro9mc1ivjpnjdpchkt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDomE2a5jcD23vonNioEb2P1ObYlwOy2z0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297601361917-h487eebl8r0im2ro9mc1ivjpnjdpchkt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297601361917:android:ab759d4e6e786b65",
+        "android_client_info": {
+          "package_name": "com.ferryglobal.ferryman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297601361917-k6d7rnjr2gssc80kd33j1nkjmshfaolh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ferryglobal.ferryman",
+            "certificate_hash": "c54029b7147aeeceeae0743ec7dfb11b441ed09b"
+          }
+        },
+        {
+          "client_id": "297601361917-h487eebl8r0im2ro9mc1ivjpnjdpchkt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDomE2a5jcD23vonNioEb2P1ObYlwOy2z0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297601361917-h487eebl8r0im2ro9mc1ivjpnjdpchkt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
